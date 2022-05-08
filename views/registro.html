@@ -1,0 +1,60 @@
+<!-- Equirent -->
+<!-- Programado Felipe gil mayor -->
+<!-- 10 de febrero -->
+<!-- Entrada -->
+<!-- Salida -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro</title>
+  <link rel="stylesheet" href="resources/css/styles.css">
+</head>
+
+<body>
+  <!-- contendor en donde se crea una nueva cuenta -->
+  <div class="container_form container_form_modifier ">
+    <form class="form form_registro" action="/register" method="POST">
+      <h2 class="Form_subtitle">REGISTRO</h2>
+      <div class="Form_container_iputs">
+        <label for="nombre" class="Form_label">Nombre Completo</label>
+        <input type="text" placeholder="Ingresa tus Nombre y tus apellidos" class="Form_input" id="nombre" name="nombre"
+          required>
+
+        <label for="apellido" class="Form_label">Correo</label>
+        <input type="email" placeholder="Ingresa tu correo" class="Form_input" id="correo" name="correo" required>
+
+        <label for="contraseña" class="Form_label">Contraseña</label>
+        <input type="password" placeholder="Ingresa tu contraseña" class="Form_input" id="contraseña" name="contraseña"
+          required>
+
+        <a href="/" class="Form_btn Form_btn_cancelar">CANCELAR</a> <input type="submit" value="REGISTRARSE"
+          class="Form_btn">
+      </div>
+    </form>
+  </div>
+
+
+  <!-- script de las alertas -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- mensaje de alerta de que se creo la cuenta de manera exitosa -->
+  <% if(typeof alert !="undefined" ) { %>
+    <script>
+      Swal.fire({
+        title: '<%= alertTitle %>',
+        text: '<%= alertMessage %>',
+        icon: '<%= alertIcon %>',
+        showConfirmButton: false,
+        timer: '<%=  timer %>'
+      }).then(() => {
+        window.location = '/ <%= ruta %>'
+      })
+    </script>
+    <% } %>
+</body>
+
+</html>

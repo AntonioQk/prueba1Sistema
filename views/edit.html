@@ -1,0 +1,50 @@
+<!-- Equirent -->
+<!-- Programado Felipe gil mayor -->
+<!-- 10 de febrero -->
+<!-- Entrada -->
+<!-- Salida -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Nos permite darle el titulo a la pagina web -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar registro</title>
+  <link rel="stylesheet" href="../resources/css/StyleBañosCliente.css">
+</head>
+
+<body>
+  <!-- aqui se muestran los datos del registro seleccionado par que se pueda ediatar lo que se desee -->
+  <main class="main_edit">
+    <% if (cliente) { %>
+      <form class="contenedor_datos_ingreso" action="/update" method="post">
+        <input id="id_cliente" name="id_cliente" value="<%= cliente.id_cliente %>" class="Input_ingresar_registro"
+          placeholder="Id">
+        <input type="text" class="Input_ingresar_registro" placeholder="Nombre" id="nombre" name="nombre"
+          value="<%= cliente.Nombre%>">
+        <input type="text" class="Input_ingresar_registro" placeholder="Apellidos" id="apell" name="apell"
+          value="<%= cliente.apellidos %>">
+        <input type="text" class="Input_ingresar_registro" placeholder="Telefono" id="tel" name="tel"
+          value="<%= cliente.telefono %>">
+        <input type="text" class="Input_ingresar_registro input_direccion" placeholder="Direccion De Renta" id="direc"
+          name="direc" value="<%= cliente.direccion_renta %>">
+        <select id="tipo_bano" disabled name="tipo_bano" class="Input_ingresar_registro">
+          <option value="normal" selected>
+            <%= cliente.tipo_baño %>
+          </option>
+          <option value="vip">VIP</option>
+        </select>
+        <input type="number" disabled class="Input_ingresar_registro input_number" placeholder="Cantidad" id="canti"
+          name="canti" value="<%= cliente.cantidad %>">
+        <button type="submit" class="btn_ingresar">Actualizar</button>
+        <a href="/clientes" class="btn_ingresar btn_cancelar">Cancelar</a>
+      </form>
+      <% } %>
+  </main>
+
+</body>
+
+</html>

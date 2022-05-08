@@ -1,0 +1,94 @@
+<!-- Equirent -->
+<!-- Programado  Felipe gil mayor -->
+<!-- 24 De abril -->
+<!-- Entrada -->
+<!-- Salida -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baños Disponibles</title>
+  <link rel="stylesheet" href="resources/css/StyleBañosCliente.css">
+</head>
+
+<body>
+
+  <header>
+    <!-- encabezado (barra de navegacion) -->
+    <div class="contendor_usuario contendor_usuario--modifier">
+      <img src="" alt="" class="img_usuario">
+      <h2>EQUIRENT</h2>
+    </div>
+    <nav class="Nav1">
+
+      <a href="./clientes" class="Contenedor_clientes">
+        <img src="resources/img/iconos/iconoClientes 1.png" alt="cliente" class="clientes_logo">
+        Clientes
+      </a>
+
+      <a href="./Banos" class="Contenedor_baños">
+        <img src="resources/img/iconos/iconoBaño.png" alt="baño" class="baños_logo">
+        Baños Disponibles
+      </a>
+
+      <div class="contenedor_btns">
+        <a href="logout" class="cerrar_sesion">Cerrar Sesión</a>
+      </div>
+    </nav>
+
+    <nav class="Nav2" id="nav2">
+      <button class="btn_menu" id="btn_menu"><img src="resources/img/menu.svg" alt=""></button>
+
+      <button class="btn_menu btn_menu-modifier" id="menu_close"><img src="resources/img/close_menu.svg"
+          alt=""></button>
+
+      <div class="container_nav2" id="menu2">
+        <a href="./clientes" class="clientes_nav2 option_menu2 ">Clientes</a>
+        <a href="./Banos" class="baño_nav2 option_menu2 ">Baños</a>
+        <a href="logout" class="cerrar_sesion cerrar_sesion-modifier">Cerrar Sesión</a>
+      </div>
+    </nav>
+
+  </header>
+
+  <main class="container">
+    <!-- Esta es la parte donde se muestra los baños que contiene cada uno -->
+
+
+    <!-- tarjetas de baños -->
+    <% results.forEach((baños)=>{ %>
+      <article class="article">
+        <h2 class="titulo_Article">
+          <%= baños.tipo_baño %>
+        </h2>
+        <img src="resources/img/Baño.svg" alt="Baño" class="img_article">
+        <div class="contenedor_text_article">
+          <p class="text_article">
+            Contiene: <br>
+          <ul class="text_article_lista">
+            <li>Agua</li>
+            <li>Jabón</li>
+            <li>Papel de baño</li>
+          </ul>
+          </p>
+
+          <h3 class="catidad_article catidad_article-modifier">Cantidad Disponible de baños: <br>
+            <div class="num_baños">
+              <%= baños.disponibles %>
+                <input type="number" class="catidad_article_input">
+            </div>
+          </h3>
+        </div>
+      </article>
+      <% }) %>
+
+        <!-- script para hacer responsive el header -->
+        <script src="../js/nav.js"></script>
+  </main>
+
+</body>
+
+</html>

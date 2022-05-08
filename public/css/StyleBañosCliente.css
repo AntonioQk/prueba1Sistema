@@ -1,0 +1,517 @@
+/*fuentes importadas de google*/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap");
+/*variable de colores a utilizar*/
+:root {
+  --colorPrincipal: #f39c12;
+}
+/*espacio y margen de todo el contenido*/
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+/*aplicar fuente en todo el cuerpo y color*/
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #ECF0F1;
+}
+
+/* --------------- PAGINA DE BAÑOS -------------------------- */
+/* se modifica el boton de baños que esta en el nav */
+.Contenedor_baños {
+  width: 180px;
+  height: 41px;
+  background-color: var(--colorPrincipal);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: black;
+  font-size: 12px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* se modifica el boton de clientes que esta en el nav */
+.Contenedor_clientes {
+  width: 180px;
+  height: 41px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 1px solid darkgrey;
+  color: black;
+  font-size: 12px;
+  text-decoration: none;
+  font-weight: 500;
+}
+/*logo de baños y clientes altura y ancho*/
+.baños_logo,
+.clientes_logo {
+  width: 19px;
+  height: 19px;
+}
+
+.contenedor_btns {
+  width: 160px;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+/*tamaño de imagen*/
+.img_usuario {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgb(32, 32, 32);
+}
+
+/*tamaño y color de los h2*/
+h2 {
+  font-size: 20px;
+  color: var(--colorPrincipal);
+}
+/*tamaño, color, espacio de la cabecera*/
+header {
+  width: 100%;
+  height: 75px;
+  background-color: #dad5d1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+  position: relative;
+}
+/*navegacion de altura y ancho*/
+.Nav1{
+  width: 750px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contendor_usuario {
+  width: 370px;
+  height: 72px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.contendor_usuario--modifier{
+  width: 200px;
+}
+/*edicion de usuario*/
+.usuario_text{
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+/*efecto de cerrar sesion*/
+.cerrar_sesion {
+  text-decoration: none;
+  color: rgb(32, 32, 32);
+}
+
+/* algunos efectos a los btns de las paginas */
+.Contenedor_clientes:hover{
+  background-color: #9c9c9c;
+}
+
+.btn:hover{
+  background-color: black;
+  color: white;
+}
+
+.Contenedor_clientes:focus, .Contenedor_baños:focus{
+  background-color: var(--colorPrincipal);
+}
+
+
+/* main - articles (baños dispo)*/
+
+.container{
+  max-width: 1600px;
+  width: 90%;
+  height: calc(100vh - 75px);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.article{
+  width: 464px;
+  height: 620px;
+  background-color: white;
+  border-radius: 20px;
+  text-align: center;
+  color: black;
+  margin: 35px 0;
+  padding: 56px 20px 20px;
+  box-shadow: 7px 5px 26px -6px rgba(0, 0, 0, 0.57);
+  -webkit-box-shadow: 7px 5px 26px -6px rgba(0, 0, 0, 0.57);
+  -moz-box-shadow: 7px 5px 26px -6px rgba(0, 0, 0, 0.57);
+}
+
+.titulo_Article{
+  font-size: 20px;
+  color: inherit;
+  text-transform: uppercase;
+}
+
+.img_article{
+  width: 160px;
+  margin: 40px 0 0;
+}
+
+.text_article{
+  font-weight: 700;
+  line-height: 35px;
+  margin-top: 20px;
+}
+
+.text_article_lista{
+  line-height: 35px;
+}
+
+.catidad_article{
+  line-height: 40px;
+  margin-top: 75px;
+}
+
+.catidad_article-modifier{
+  margin-top: 40px
+}
+
+.num_baños{
+  color: var(--colorPrincipal);
+  font-size: 25px;
+  font-weight: 700;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.catidad_article_input{
+  border: none;
+  width: 19px;
+  margin-left: 10px;
+  
+}
+
+/* menu en pantallas pequeñas */
+
+.btn_menu{
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  background-color: #dad5d1;
+}
+
+.btn_menu > img {
+  width: 35px;
+}
+
+.btn_menu-modifier{
+  display: none;
+  background-color: rgb(204, 204, 204);
+  margin: 0 auto;
+}
+/*efectos del menu de navegacion*/
+.Nav2{
+  display: none;
+  z-index: 2;
+  order: 1;
+  position: absolute;
+  right: 50px;
+  top: 20px;
+  text-align: center;
+}
+
+.container_nav2{
+ display: none;
+ padding-bottom: 10px;
+}
+
+.container_nav2 a {
+  width: 90%;
+  display: block;
+  text-decoration: none;
+  padding: 20px 0;
+  font-weight: 500;
+  color: rgb(19, 19, 19);
+  border-radius: 5px;
+  margin: 5px auto;
+
+}
+/* cuando el nav se encuentre en la pagina de baños */
+.baño_nav2{
+  background-color: var(--colorPrincipal);
+}
+
+.baño_nav2:hover, .clientes_nav2:hover{
+  background-color: var(--colorPrincipal);
+}
+
+.clientes_nav2{
+  background-color: rgb(204, 204, 204);
+}
+
+.cerrar_sesion-modifier:hover{
+ background-color: black;
+ color: white;
+}
+
+/* cuando el nav se encuentre en la pagina de cientes */
+.baño_nav2-modifier {
+  background-color: rgb(204, 204, 204);
+}
+
+.clientes_nav2-modifier{
+  background-color: var(--colorPrincipal);
+}
+
+.Buscar:hover{
+  background-color: black;
+  color: white;
+}
+
+
+/* Responsive de los baños */
+
+@media screen and (max-width:1255px) {
+  .Nav1{
+    display: none;
+  }
+
+  .Nav2{
+    display: block;
+  }
+
+  .container{
+    gap: 30px;
+  }
+
+  
+}
+
+@media screen and (max-width:958px) {
+  .article {
+    margin-bottom: 0px;
+  }
+  
+  .article:last-child {
+    margin-top: 0px;
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width:499px) {
+  .article{
+    width: 90%;
+    padding: 30px;
+  }
+
+  .contendor_usuario{
+    width: 250px;
+  }
+
+  .usuario_text{
+    width: 150px;
+  }
+}
+
+
+/* -----------------CLIENTES--------------------- */
+
+.Option{
+  display: flex;
+  flex-direction: column;
+}
+.chek_label{
+  margin-bottom: 5px;
+}
+
+.Contenedor_clientes-modifier{
+  background-color: var(--colorPrincipal);
+  border: none;
+}
+
+.Contenedor_baños-modifier{
+  background-color: #f2eae1;
+  border: 1px solid darkgrey;
+}
+
+/* Algunos efectos en los botones de las paginas */
+.Contenedor_baños-modifier:hover {
+  background-color: #9c9c9c;
+}
+.Contenedor_clientes-modifier:focus,
+.Contenedor_baños-modifier:focus {
+  background-color: var(--colorPrincipal);
+}
+
+.Contenedor_clientes-modifier:hover{
+  background-color: var(--colorPrincipal);
+}
+
+/* div para ingresar un nuevo registro */
+
+.contenedor_datos_ingreso{
+  width: 100%;
+  background-color: #95A5A6;
+  height: 85px;
+  border-radius: 10px;
+  margin: 20px 0 50px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 10px;
+}
+
+.Input_ingresar_registro{
+  width: 180px;
+  height: 33px;
+  border-radius: 10px;
+  border: none; 
+  padding: 0 8px;
+  font-family: inherit;
+  color: #202020;
+  font-weight: 500;
+  outline: none;
+}
+
+.input_direccion{
+  width: 280px;
+}
+
+.input_number{
+  width: 120px;
+}
+
+.Input_ingresar_registro::placeholder{
+  text-align: center;
+  font-family: inherit;
+  font-weight: 500;
+}
+/*efectos de boton de ingresar*/
+.btn_ingresar{
+  width: 90px;
+  height: 33px;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--colorPrincipal);
+  color: white;
+  font-weight: 700;
+  font-size: .8rem;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/*efectos de boton de cancelacion*/
+.btn_cancelar{
+  background-color: #838383;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* estilos de la tabla */
+
+.main_clientes{
+  width: 85%;
+  margin: 0 auto;
+  padding-bottom: 30px;
+}
+/*tamaño de la tabla clientes*/
+.tabla_clientes{
+  width: 100%;
+}
+
+.Head_table{
+  width: 100%;
+  height: 50px;
+  color: #838383;
+  font-weight: 500;
+}
+
+.titulo_encabezado_table{
+  /* width: 14.28%; */
+  text-align: center;
+}
+
+.cuadro_btns_tabla{
+  width: 45px;
+}
+
+.cuadro_btns_tabla a img{
+  width:50%;
+  margin: 0 auto;
+  display: block;
+}
+
+.dato_registro{
+  /* width: 14.28%; */
+  height: 90px;
+  text-align: center;
+  padding: 10px;
+}
+
+.fila_dato_registro{
+  background-color: white;
+}
+
+/* responsive de ingreso de datos */
+@media screen and (max-width:1696px) {
+  .contenedor_datos_ingreso{
+    padding: 30px 70px;
+    height: auto;
+  }
+
+  .main_clientes{
+    width: 90%;
+  }
+
+}
+
+@media screen and (max-width:890px){
+  .main_clientes{
+    width: 95%;
+    
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .main_clientes {
+    width: 98%;
+  }
+
+  .dato_registro-modifier, .titulo_encabezado_table-modifier{
+    display: none;
+  }
+
+  
+}
+
+
+
+

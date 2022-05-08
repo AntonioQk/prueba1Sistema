@@ -1,0 +1,179 @@
+<!-- Equirent -->
+<!-- Programado por  Felipe gil mayor -->
+<!-- 15 de abril -->
+<!-- Entrada -->
+<!-- Salida -->
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- Nos permite darle el titulo a la pagina web  -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clientes</title>
+  <link rel="stylesheet" href="resources/css/StyleBañosCliente.css">
+</head>
+
+<body>
+  <!-- encabezado (barra de navegacion) -->
+  <header>
+    <div class="contendor_usuario">
+      <img src="" alt="" class="img_usuario">
+      <div class="usuario_text">
+        <h2>EQUIRENT</h2>
+        <a href="logout" class="cerrar_sesion">Cerrar Sesión</a>
+      </div>
+    </div>
+
+    <nav class="Nav1">
+      <!-- Esta es la parte donde se muestran los link de las imagnes del sistema -->
+      <a href="./clientes" class="Contenedor_clientes Contenedor_clientes-modifier">
+        <img src="resources/img/iconos/iconoClientes 1.png" alt="cliente" class="clientes_logo">
+        Clientes
+      </a>
+
+      <a href="./Banos" class="Contenedor_baños Contenedor_baños-modifier">
+        <img src="resources/img/iconos/iconoBaño.png" alt="baño" class="baños_logo">
+        Baños Disponibles
+      </a>
+
+      <div class="contenedor_btns">
+        <div class="Option">
+          <label for="name" class="chek_label">Filtar Por Nombre</label>
+          <input type="checkbox" name="name" id="">
+        </div>
+      </div>
+    </nav>
+
+    <nav class="Nav2" id="nav2">
+      <button class="btn_menu" id="btn_menu">
+        <img src="../resources/img/menu.svg" alt="">
+      </button>
+
+      <button class="btn_menu btn_menu-modifier" id="menu_close">
+        <img src="../resources/img/close_menu.svg" alt="">
+      </button>
+
+      <div class="container_nav2" id="menu2">
+        <a href="./clientes" class="clientes_nav2 option_menu2 clientes_nav2-modifier">Clientes</a>
+        <a href="./Banos" class="baño_nav2 option_menu2 baño_nav2-modifier">Baños</a>
+        <div class="Option">
+          <label for="name" class="chek_label">Filtar Por Nombre</label>
+          <input type="checkbox" name="name" id="">
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Aca es donde se guardan los datos de las personas al sistema  -->
+
+  <main class="main_clientes">
+    <!-- Se capturan los datos -->
+    <form class="contenedor_datos_ingreso" action="/save" method="post">
+      <input type="text" class="Input_ingresar_registro" placeholder="Nombre" id="nombre" name="nombre">
+      <input type="text" class="Input_ingresar_registro" placeholder="Apellidos" id="apell" name="apell">
+      <input type="text" class="Input_ingresar_registro" placeholder="Telefono" id="tel" name="tel">
+      <input type="text" class="Input_ingresar_registro input_direccion" placeholder="Direccion De Renta" id="direc"
+        name="direc">
+
+      <select id="tipo_bano" name="tipo_bano" class="Input_ingresar_registro">
+        <option value="normal" selected>Normal</option>
+        <option value="vip">VIP</option>
+      </select>
+      <input type="number" class="Input_ingresar_registro input_number" placeholder="Cantidad" id="canti" name="canti">
+      <button type="submit" class="btn_ingresar">Agregar</button>
+      <a href="/clientes" class="btn_ingresar btn_cancelar">Cancelar</a>
+    </form>
+    <!-- esta es la tabla que muestra los datos que ya se han ingresado -->
+    <table class="tabla_clientes">
+      <thead class="Head_table">
+        <tr class="fila_encabezado">
+          <th class="titulo_encabezado_table titulo_encabezado_table-modifier">Id</th>
+          <th class="titulo_encabezado_table">Nombre</th>
+          <th class="titulo_encabezado_table">Apellidos</th>
+          <th class="titulo_encabezado_table titulo_encabezado_table-modifier">Num. Tel</th>
+          <th class="titulo_encabezado_table">Direccion De <br> La Renta</th>
+          <th class="titulo_encabezado_table">Tipo Baño</th>
+          <th class="titulo_encabezado_table">Cantidad</th>
+          <th class="titulo_encabezado_table">Devolver en:</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <% results.forEach((cliente)=>{ %>
+          <tr class="fila_dato_registro">
+            <td class="dato_registro dato_registro-modifier">
+              <%= cliente.id_cliente %>
+            </td>
+
+            <td class="dato_registro">
+              <%= cliente.Nombre %>
+
+            </td>
+            <td class="dato_registro">
+              <%= cliente.apellidos %>
+
+            </td>
+            <td class="dato_registro dato_registro-modifier">
+              <%= cliente.telefono %>
+            </td>
+            <td class="dato_registro">
+              <%= cliente.direccion_renta %>
+            </td>
+            <td class="dato_registro">
+              <%= cliente.tipo_baño %>
+            </td>
+            <td class="dato_registro">
+              <%= cliente.cantidad %>
+            </td>
+            <td class="dato_registro">
+              <%= cliente.dias_restantes %>
+            </td>
+
+            <td class="cuadro_btns_tabla">
+              <a href="/edit/<%= cliente.id_cliente %>"><img src="resources/img/iconos/edit.svg" alt="delete"></a>
+            </td>
+
+            <td class="cuadro_btns_tabla">
+              <a onclick="confirmar('<%= cliente.id_cliente %>', '<%= cliente.Nombre %>')"><img
+                  src="resources/img/iconos/delete.svg" alt="delete" id="btn_eliminar" name="btn_eliminar"></a>
+            </td>
+          </tr>
+          <% }) %>
+
+
+      </tbody>
+    </table>
+
+  </main>
+
+  <!-- script del nav -->
+  <script src="/js/nav.js"></script>
+
+  <!-- script de las alertas -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script>
+    function confirmar(id_cliente, nombre) {
+      Swal.fire({
+        title: `¿Realmente quieres eliminar el registro de: ${nombre}?`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Confirmar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location = '/delete/' + id_cliente;
+        }
+      })
+    }
+  </script>
+
+
+</body>
+
+</html>
