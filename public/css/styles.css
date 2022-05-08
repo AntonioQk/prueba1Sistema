@@ -139,3 +139,10 @@ a.Form_btn{
   font-weight: 500;
   display: none;
 }
+
+@media screen and  (max-width:522px) {
+  .form{
+    width: 90%;
+  }
+}
+
