@@ -8,7 +8,8 @@ Salida: una conexion para poder usarlo en diferentes acciones*/
 const mysql2 = require('mysql2');
 
 //creo una conexion a mysql con sus respectivos datos
-const conexion = mysql2.createConnection({
+const pool = mysql2.createPool ({
+  connectionLimit:100,
   host: 'bedrctcnz48xlyvc03ro-mysql.services.clever-cloud.com',
   user: 'ugkkerzofhfn8atd',
   password: 'Whqmsfa0Va8PjUMckulf',
@@ -18,7 +19,7 @@ const conexion = mysql2.createConnection({
 
 
 //se verifica si la conexion se realiza correctamente o si hay algun error
-conexion.connect((error) =>{
+pool.getConnection((error) =>{
   if (error) {
     console.error('El error de conexion es:'+ error);
     return
@@ -29,5 +30,5 @@ conexion.connect((error) =>{
 
 
 //la conexion creada se exporta para poder se utilizada en otras operaciones
-module.exports = conexion;
+module.exports = pool;
 
