@@ -10,7 +10,7 @@ const { query } = require('./database/db');
 const router = express.Router();
 
 //utilizo la conexion de mysql que se creo en su respectivo archivo (db.js)
-const conexion = require('./database/db');
+
 
 
 
@@ -38,7 +38,7 @@ router.post('/register', async(req, res)=> {
   const pass = req.body.contraseña
   let passwordHash = await bcrypt.hash(pass, 8);
   //una vez que se obtiene los datos se mandan a guardar a la base de datos
-  conexion.query('INSERT INTO usuarios SET ?', {nombre_completo:name, correo:correo, contraseña:passwordHash}, async(error, results) =>{
+  pool.query('INSERT INTO usuarios SET ?', {nombre_completo:name, correo:correo, contraseña:passwordHash}, async(error, results) =>{
     if (error) {
       console.log(error);
     }else{
@@ -61,7 +61,7 @@ router.post('/auth', async (req, res) => {
   const email = req.body.email;
   const contra = req.body.contra;
   //se verifica que el correo y la contraseña existan en la BD
-  conexion.query('SELECT * FROM usuarios WHERE correo = ?', [email], async (error, results) => {
+  pool.query('SELECT * FROM usuarios WHERE correo = ?', [email], async (error, results) => {
     if (results.length == 0 || !(await bcrypt.compare(contra, results[0].contraseña))){
       res.render('index.html', {
         alert:true,
@@ -92,7 +92,7 @@ router.post('/auth', async (req, res) => {
 router.get('/clientes', (req, res) =>{
   if (req.session.loggedin) {
     //una vez que se entra a esta ruta, se utiliza una sentencia query para mostrar datos de la BD
-    conexion.query('SELECT * FROM clientes_renta', (error, results) =>{
+    pool.query('SELECT * FROM clientes_renta', (error, results) =>{
       if (error) {
         throw error;
       }else{
@@ -111,10 +111,10 @@ router.get('/delete/:id_cliente', (req, res)=>{
       //se obitiene el id del registro que se quiere eliminar
     const id = req.params.id_cliente;
     //Se realiza la actualizacion en los baños disponibles, ya que se va a elimar este registro deja disponibles los baños que rentó, por lo tanto se suman otra vez estos baños a los disponibles
-    conexion.query(`update baños inner join clientes_renta on baños.tipo_baño = clientes_renta.tipo_baño
+    pool.query(`update baños inner join clientes_renta on baños.tipo_baño = clientes_renta.tipo_baño
   set baños.disponibles = baños.disponibles + clientes_renta.cantidad where clientes_renta.id_cliente = ${id}`);
   //Se elimina el registro seleccionado
-      conexion.query('DELETE FROM clientes_renta WHERE id_cliente = ?', [id], (error, results) => {
+      pool.query('DELETE FROM clientes_renta WHERE id_cliente = ?', [id], (error, results) => {
         if (error) {
           throw error;
         }else{
@@ -134,7 +134,7 @@ router.get('/edit/:id_cliente', (req, res) =>{
   if (req.session.loggedin) {
     const id = req.params.id_cliente;
     //una vez que se entra a la ruta EDIT, se utiliza una sentencia query para mostrar datos de la BD en los inputs, para despues realizar la actualizacion de lo que se necesite
-    conexion.query('SELECT * FROM clientes_renta WHERE id_cliente = ?',[id], (error, results) => {
+    pool.query('SELECT * FROM clientes_renta WHERE id_cliente = ?',[id], (error, results) => {
       if (error) {
         throw error;
       }else{
@@ -150,6 +150,7 @@ router.get('/edit/:id_cliente', (req, res) =>{
 
 //se utiliza las acciones de guardar y actualizar datos, los cuales se definieron arriba de este archivo, ya que antes solo se crearon y no se utiliza, para que funcionen se tiene que hacer estas siguientes lineas
 const crud = require('./controllers/crud');
+const pool = require('./database/db');
 router.post('/save', crud.save);
 router.post('/update', crud.update);
 
@@ -158,7 +159,7 @@ router.post('/update', crud.update);
 // SE DEFINE LA RUTA PARA LA PAGINA DE BAÑOS Y SE DEFINE QUE OPERACION SE REALIZARÁ CUANDO SE ENTRE A ESTA RUTA
 router.get('/banos', (req, res) =>{
   if (req.session.loggedin) {
-    conexion.query('select tipo_baño, disponibles from baños;', (error, results) => {
+    pool.query('select tipo_baño, disponibles from baños;', (error, results) => {
     if (error) {
       throw error;
     }else{
