@@ -105,6 +105,16 @@ router.get('/clientes', (req, res) =>{
 
 })
 
+//ruta de ingreso
+router.get('/ingreso', (req, res) => {
+  if (req.session.loggedin) {
+    res.render('ingresar.html');
+  }else{
+    res.redirect('/');
+  }
+})
+  
+
 // SE DEFINE LA RUTA PARA LA PAGINA DE eliminar un registro Y SE DEFINE QUE OPERACION SE REALIZARÁ CUANDO SE ENTRE A ESTA RUTA
 router.get('/delete/:id_cliente', (req, res)=>{
   if (req.session.loggedin) {
