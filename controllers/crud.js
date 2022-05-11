@@ -17,9 +17,10 @@ exports.save = (req, res) =>{
   const direc = req.body.direc;
   const tipo_bano = req.body.tipo_bano;
   const canti = req.body.canti;
+  const fecha = new Date();
 
   //se mandan a guardar los datos capturados en la BD
-  pool.query('INSERT INTO clientes_renta SET ?', {Nombre:nombre, apellidos:apell, telefono:tel, direccion_renta:direc, tipo_baño:tipo_bano, cantidad:canti}, (error, results) =>{
+  pool.query('INSERT INTO clientes_renta SET ?', {Nombre:nombre, apellidos:apell, telefono:tel, direccion_renta:direc, tipo_baño:tipo_bano, cantidad:canti, devolver:fecha, ingreso:fecha}, (error, results) =>{
     if (error) {
       console.log(error);
       res.redirect('/clientes');
@@ -28,8 +29,12 @@ exports.save = (req, res) =>{
       res.redirect('/clientes');
     }
   })
+  //Se le pone la cantidad de dias restantes para entregar
+  pool.query('update clientes_renta set devolver = date_add(devolver, interval 15 day)');
   //Se captura la cantidad de baños rentados para restarselos a la tabla de baños disponobles, ya que estaran ocucpados esos baños
   pool.query(`update baños set disponibles = disponibles - ${canti} where tipo_baño = "${tipo_bano}"`);
+  //Se agrega esos dias en la tabla
+  pool.query(`update clientes_renta set dia_restantes = timestampdiff(day, ingreso, devolver)`);
 };
 
 //ACTUALIZAR REGISTROS
