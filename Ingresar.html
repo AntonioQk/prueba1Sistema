@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingresar datos</title>
+  <link rel="stylesheet" href="../public/css/StyleBañosCliente.css">
+</head>
+
+<body>
+  <main>
+    <h1 class="titulo_datos">Ingresa un nuevo registro</h1>
+    <form class="contenedor_datos_ingreso" action="/save" method="post">
+      <input type="text" class="Input_ingresar_registro" placeholder="Nombre" id="nombre" name="nombre">
+      <input type="text" class="Input_ingresar_registro" placeholder="Apellidos" id="apell" name="apell">
+      <input type="text" class="Input_ingresar_registro" placeholder="Telefono" id="tel" name="tel">
+      <input type="text" class="Input_ingresar_registro input_direccion" placeholder="Direccion De Renta" id="direc"
+        name="direc">
+
+      <select id="tipo_bano" name="tipo_bano" class="Input_ingresar_registro">
+        <option value="normal" selected>Normal</option>
+        <option value="vip">VIP</option>
+      </select>
+      <input type="number" class="Input_ingresar_registro input_number" placeholder="Cantidad" id="canti" name="canti">
+      <button type=" submit" class="btn_ingresar">Agregar</button>
+      <a href="/clientes" class="btn_ingresar btn_cancelar">Cancelar</a>
+    </form>
+  </main>
+
+
+</body>
+
+</html>
