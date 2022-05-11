@@ -19,6 +19,7 @@
 <body>
   <!-- aqui se muestran los datos del registro seleccionado par que se pueda ediatar lo que se desee -->
   <main class="main_edit">
+    <h1 class="titulo_datos">Editar registro</h1>
     <% if (cliente) { %>
       <form class="contenedor_datos_ingreso" action="/update" method="post">
         <input id="id_cliente" name="id_cliente" value="<%= cliente.id_cliente %>" class="Input_ingresar_registro"
