@@ -481,6 +481,27 @@ header {
   background-color: white;
 }
 
+.boton_ingresar_nuevo{
+  width: 35px;
+  height: 35px;
+  background-color: #f39c12;
+  color: white;
+  font-weight: 200;
+  font-size: 20px;
+  border: none;
+  /* border-radius: 50%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.btn_nuevoDato{
+  text-decoration: none;
+  width: 35px;
+    height: 35px;
+}
+
 /* responsive de ingreso de datos */
 @media screen and (max-width:1696px) {
   .contenedor_datos_ingreso{
