@@ -373,7 +373,7 @@ header {
 /* div para ingresar un nuevo registro */
 
 .contenedor_datos_ingreso{
-  width: 100%;
+  width: 95%;
   background-color: #95A5A6;
   height: 85px;
   border-radius: 10px;
@@ -384,6 +384,7 @@ header {
   flex-wrap: wrap;
   gap: 20px;
   padding: 10px;
+  margin: 0 auto;
 }
 
 .Input_ingresar_registro{
@@ -510,6 +511,12 @@ header {
   }
 
   
+}
+
+.titulo_datos{
+  text-align: center;
+  font-size: 1.7rem;
+  margin: 20px 0;
 }
 
 
