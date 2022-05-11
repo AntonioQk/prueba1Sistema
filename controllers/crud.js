@@ -34,7 +34,7 @@ exports.save = (req, res) =>{
   //Se captura la cantidad de baños rentados para restarselos a la tabla de baños disponobles, ya que estaran ocucpados esos baños
   pool.query(`update baños set disponibles = disponibles - ${canti} where tipo_baño = "${tipo_bano}"`);
   //Se agrega esos dias en la tabla
-  pool.query(`update clientes_renta set dia_restantes = timestampdiff(day, ingreso, devolver)`);
+  //pool.query(`update clientes_renta set dia_restantes = timestampdiff(day, ingreso, devolver)`);
 };
 
 //ACTUALIZAR REGISTROS
