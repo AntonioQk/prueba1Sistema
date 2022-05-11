@@ -20,7 +20,7 @@ exports.save = (req, res) =>{
   const fecha = new Date();
 
   //se mandan a guardar los datos capturados en la BD
-  pool.query('INSERT INTO clientes_renta SET ?', {Nombre:nombre, apellidos:apell, telefono:tel, direccion_renta:direc, tipo_baño:tipo_bano, cantidad:canti, devolver:fecha, ingreso:fecha}, (error, results) =>{
+  pool.query('INSERT INTO clientes_renta SET ?', {Nombre:nombre, apellidos:apell, telefono:tel, direccion_renta:direc, tipo_baño:tipo_bano, cantidad:canti, devolver:fecha}, (error, results) =>{
     if (error) {
       console.log(error);
       res.redirect('/clientes');
