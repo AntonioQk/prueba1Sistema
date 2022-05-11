@@ -95,7 +95,7 @@
           <th class="titulo_encabezado_table">Apellidos</th>
           <th class="titulo_encabezado_table titulo_encabezado_table-modifier">Num. Tel</th>
           <th class="titulo_encabezado_table titulo_encabezado_table-modifier">Direccion De <br> La Renta</th>
-          <th class="titulo_encabezado_table">Tipo Baño</th>
+          <th class="titulo_encabezado_table">Tipo <br> Baño</th>
           <th class="titulo_encabezado_table">Cantidad</th>
           <th class="titulo_encabezado_table">Devolver en:</th>
         </tr>
@@ -128,6 +128,9 @@
             </td>
             <td class="dato_registro">
               <%= cliente.cantidad %>
+            </td>
+             <td class="dato_registro" id="fecha">
+              <%= cliente.dia_restantes %> dias
             </td>
             <td class="dato_registro">
               <%= cliente.dias_restantes %>
