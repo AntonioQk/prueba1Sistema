@@ -81,7 +81,7 @@ router.post('/auth', async (req, res) => {
         alertMessage: email,         
         showConfirmButton: false,
         timer: 2500,
-        ruta: 'clientes'
+        ruta: 'rentas'
       });
     } 
     }) 
@@ -89,14 +89,14 @@ router.post('/auth', async (req, res) => {
 
 
 // SE DEFINE LA RUTA PARA LA PAGINA DE CLIENTES Y SE DEFINE QUE OPERACION SE REALIZARÁ CUANDO SE ENTRE A ESTA RUTA
-router.get('/clientes', (req, res) =>{
+router.get('/rentas', (req, res) =>{
   if (req.session.loggedin) {
     //una vez que se entra a esta ruta, se utiliza una sentencia query para mostrar datos de la BD
     pool.query('SELECT * FROM clientes_renta', (error, results) =>{
       if (error) {
         throw error;
       }else{
-        res.render('Clientes.html', {results:results}); 
+        res.render('Rentas.html', {results:results}); 
       }
     })
   }else{
@@ -128,7 +128,7 @@ router.get('/delete/:id_cliente', (req, res)=>{
         if (error) {
           throw error;
         }else{
-          res.redirect('/clientes');
+          res.redirect('/rentas');
         }
       })
   }else{
