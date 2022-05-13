@@ -24,10 +24,10 @@ exports.save = (req, res) =>{
   pool.query('INSERT INTO clientes_renta SET ?', {Nombre:nombre, apellidos:apell, telefono:tel, direccion_renta:direc, tipo_baño:tipo_bano, cantidad:canti, devolver:fecha}, (error, results) =>{
     if (error) {
       console.log(error);
-      res.redirect('/clientes');
+      res.redirect('/rentas');
     }else{
       //Una vez ingresados los datos, se redirecciona a la pagina de clientes para vizualizar los datos en el navegador
-      res.redirect('/clientes');
+      res.redirect('/rentas');
     }
   })
   //Se le pone la cantidad de dias restantes para entregar
@@ -51,10 +51,10 @@ exports.update = (req, res) =>{
   pool.query('UPDATE clientes_renta SET ? WHERE id_cliente = ?', [{Nombre:nombre, apellidos:apell, telefono:tel, direccion_renta:direc}, id] , (error, results) => {
     if (error) {
       console.log(error);
-      res.redirect('/clientes');
+      res.redirect('/rentas');
     }else{
       //Una vez actualizado los datos, se redirecciona a la pagina de clientes para vizualizar los datos en el navegador
-      res.redirect('/clientes');
+      res.redirect('/rentas');
     }
   })
  
