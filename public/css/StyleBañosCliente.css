@@ -540,6 +540,15 @@ header {
   margin: 20px 0;
 }
 
-
+.btn_clientes{
+  width: 100px;
+  height: 25px;
+  background-color: white;
+  text-decoration: none;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 
