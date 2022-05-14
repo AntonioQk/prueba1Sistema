@@ -121,8 +121,10 @@ router.get('/delete/:id_cliente', (req, res)=>{
       //se obitiene el id del registro que se quiere eliminar
     const id = req.params.id_cliente;
     //Se realiza la actualizacion en los baños disponibles, ya que se va a elimar este registro deja disponibles los baños que rentó, por lo tanto se suman otra vez estos baños a los disponibles
-    pool.query(`update baños inner join clientes_renta on baños.tipo_baño = clientes_renta.tipo_baño
-  set baños.disponibles = baños.disponibles + clientes_renta.cantidad where clientes_renta.id_cliente = ${id}`);
+    conexion.query(`update baños inner join clientes_renta on baños.tipo_baño = "normal"
+  set baños.disponibles = baños.disponibles + clientes_renta.baños_normales where clientes_renta.id_cliente = ${id}`);
+    conexion.query(`update baños inner join clientes_renta on baños.tipo_baño = "vip"
+  set baños.disponibles = baños.disponibles + clientes_renta.baños_vip where clientes_renta.id_cliente = ${id}`);
   //Se elimina el registro seleccionado
       pool.query('DELETE FROM clientes_renta WHERE id_cliente = ?', [id], (error, results) => {
         if (error) {
