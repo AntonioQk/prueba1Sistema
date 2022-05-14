@@ -28,8 +28,8 @@
           value="<%= cliente.Nombre%>">
         <input type="text" class="Input_ingresar_registro" placeholder="Apellidos" id="apell" name="apell"
           value="<%= cliente.apellidos %>">
-        <input type="text" class="Input_ingresar_registro" placeholder="Telefono" id="tel" name="tel"
-          value="<%= cliente.telefono %>">
+        <input type="number" class="Input_ingresar_registro" placeholder="Telefono" id="tel" name="tel"
+          onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" value="<%= cliente.telefono %>">
         <input type="text" class="Input_ingresar_registro input_direccion" placeholder="Direccion De Renta" id="direc"
           name="direc" value="<%= cliente.direccion_renta %>">
         <input type="number" class="Input_ingresar_registro input_number input_number_modifier"
