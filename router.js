@@ -88,7 +88,7 @@ router.post('/auth', async (req, res) => {
 })
 
 
-// SE DEFINE LA RUTA PARA LA PAGINA DE CLIENTES Y SE DEFINE QUE OPERACION SE REALIZARÁ CUANDO SE ENTRE A ESTA RUTA
+// SE DEFINE LA RUTA PARA LA PAGINA DE RENTAS Y SE DEFINE QUE OPERACION SE REALIZARÁ CUANDO SE ENTRE A ESTA RUTA
 router.get('/rentas', (req, res) =>{
   if (req.session.loggedin) {
     //una vez que se entra a esta ruta, se utiliza una sentencia query para mostrar datos de la BD
