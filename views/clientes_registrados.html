@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clientes Registrados</title>
+  <link rel="stylesheet" href="../public/css/StyleBañosCliente.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="contendor_usuario">
+      <img src="" alt="" class="img_usuario">
+      <div class="usuario_text">
+        <h2>EQUIRENT</h2>
+        <a href="logout" class="cerrar_sesion">Cerrar Sesión</a>
+      </div>
+    </div>
+
+    <nav class="Nav1">
+      <!-- Esta es la parte donde se muestran los link de las imagnes del sistema -->
+      <a href="./rentas" class="Contenedor_clientes Contenedor_clientes-modifier Contenedor-modifier2">
+        <img src="../src/img/iconos/iconoClientes 1.png" alt="cliente" class="clientes_logo">
+        Rentas
+      </a>
+
+      <a href="./Banos" class="Contenedor_baños Contenedor_baños-modifier Contenedor-modifier2">
+        <img src="../src/img/iconos/iconoBaño.png" alt="baño" class="baños_logo">
+        Baños Disponibles
+      </a>
+
+      <div class="contenedor_btns">
+        <div class="Option">
+        </div>
+      </div>
+    </nav>
+
+    <nav class="Nav2" id="nav2">
+      <button class="btn_menu" id="btn_menu">
+        <img src="../src/img/menu.svg" alt="">
+      </button>
+
+      <button class="btn_menu btn_menu-modifier" id="menu_close">
+        <img src="../src/img/close_menu.svg" alt="">
+      </button>
+
+      <div class="container_nav2" id="menu2">
+        <a href="./rentas" class="clientes_nav2 option_menu2 clientes_nav2-modifier">Rentas</a>
+        <a href="./Banos" class="baño_nav2 option_menu2 baño_nav2-modifier">Baños</a>
+        <div class="Option">
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main_clientes">
+    <h1 class="titulo_pagina">Clientes Registrados</h1>
+
+    <a href="/nuevo_cliente" class="btn_nuevoDato">
+      <button class="boton_ingresar_nuevo">+</button>
+    </a>
+
+    <table class="tabla_clientes">
+      <thead class="Head_table">
+        <tr class="fila_encabezado">
+          <th class="titulo_encabezado_table titulo_encabezado_table-modifier">Id</th>
+          <th class="titulo_encabezado_table">Nombre</th>
+          <th class="titulo_encabezado_table">Apellidos</th>
+          <th class="titulo_encabezado_table titulo_encabezado_table-modifier">Num. Tel</th>
+          <th class="titulo_encabezado_table">Curp</th>
+          <th class="titulo_encabezado_table">Dia <br> registro</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <% results.forEach((cliente)=>{ %>
+          <tr class="fila_dato_registro">
+            <td class="dato_registro dato_registro-modifier">
+              <%= cliente.id %>
+            </td>
+
+            <td class="dato_registro">
+              <%= cliente.nombre %>
+
+            </td>
+            <td class="dato_registro">
+              <%= cliente.apellidos %>
+
+            </td>
+            <td class="dato_registro dato_registro-modifier">
+              <%= cliente.telefono %>
+            </td>
+            <td class="dato_registro">
+              <%= cliente.curp %>
+            </td>
+            <td class="dato_registro">
+              <%= cliente.dia_registro %>
+            </td>
+
+            <td class="cuadro_btns_tabla">
+              <a href="/editar_cliente/<%= cliente.id %>"><img src="../src/img/iconos/edit.svg" alt="edit"></a>
+            </td>
+
+          </tr>
+          <% }) %>
+
+
+      </tbody>
+    </table>
+  </main>
+
+</body>
+
+</html>
