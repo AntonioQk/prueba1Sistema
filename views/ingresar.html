@@ -15,15 +15,15 @@
     <form class="contenedor_datos_ingreso" action="/save" method="post">
       <input type="text" class="Input_ingresar_registro" placeholder="Nombre" id="nombre" name="nombre">
       <input type="text" class="Input_ingresar_registro" placeholder="Apellidos" id="apell" name="apell">
-      <input type="text" class="Input_ingresar_registro" placeholder="Telefono" id="tel" name="tel">
+      <input type="number" class="Input_ingresar_registro" placeholder="Telefono" id="tel" name="tel"
+        onkeypress="return (event.charCode >= 48 && event.charCode <= 57)">
       <input type="text" class="Input_ingresar_registro input_direccion" placeholder="Direccion De Renta" id="direc"
         name="direc">
 
-      <select id="tipo_bano" name="tipo_bano" class="Input_ingresar_registro">
-        <option value="normal" selected>Normal</option>
-        <option value="vip">VIP</option>
-      </select>
-      <input type="number" class="Input_ingresar_registro input_number" placeholder="Cantidad" id="canti" name="canti">
+      <input type="number" class="Input_ingresar_registro input_number" placeholder="Baños normales" id="normal"
+        name="normal" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" required>
+      <input type="number" class="Input_ingresar_registro input_number" placeholder="Baños vip" id="vip" name="vip"
+        onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" required>
       <button type=" submit" class="btn_ingresar">Agregar</button>
       <a href="/rentas" class="btn_ingresar btn_cancelar">Cancelar</a>
     </form>
