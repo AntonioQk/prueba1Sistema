@@ -554,3 +554,22 @@ header {
 .input_number_modifier{
   width: 200px;
 }
+
+/* CLIENTES_REGISTRADOS */
+.Contenedor-modifier2{
+  background-color: #f2eae1;
+  border: 1px solid darkgrey
+  
+}
+
+.titulo_pagina{
+  text-align: center;
+  font-size: 25px;
+  font-weight: 500;
+  margin: 20px 0;
+}
+
+.contenedor_datos_ingreso-modifier{
+  margin-top: 30px;
+}
+
