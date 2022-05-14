@@ -90,7 +90,7 @@ router.post('/auth', async (req, res) => {
 //SE DEFINEN LAS RUTAS PARA LOS CLIENTES, (ingresar, editar y mostrar)
 router.get('/clientes', (req, res) => {
   if (req.session.loggedin) {
-    conexion.query('SELECT * FROM clientes', (error, results) =>{
+    pool.query('SELECT * FROM clientes', (error, results) =>{
       if (error) {
         throw error;
       }else{
@@ -119,7 +119,7 @@ router.get('/editar_cliente/:id', (req, res) => {
   if (req.session.loggedin) {
     const id = req.params.id;
     //una vez que se entra a la ruta EDIT, se utiliza una sentencia query para mostrar datos de la BD en los inputs, para despues realizar la actualizacion de lo que se necesite
-    conexion.query('SELECT * FROM clientes WHERE id = ?',[id], (error, results) => {
+    pool.query('SELECT * FROM clientes WHERE id = ?',[id], (error, results) => {
       if (error) {
         throw error;
       }else{
@@ -208,7 +208,8 @@ const crud = require('./controllers/crud');
 const pool = require('./database/db');
 router.post('/save', crud.save);
 router.post('/update', crud.update);
-
+router.post('/nuevo_cliente', crud.save_cliente);
+router.post('/update_cliente', crud.update_cliente);
 
 
 // SE DEFINE LA RUTA PARA LA PAGINA DE BAÑOS Y SE DEFINE QUE OPERACION SE REALIZARÁ CUANDO SE ENTRE A ESTA RUTA
