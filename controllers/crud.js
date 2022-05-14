@@ -71,7 +71,7 @@ exports.save_cliente = (req, res) =>{
   const fecha = new Date();
   
   //se mandan a guardar los datos capturados en la BD
-  conexion.query('INSERT INTO clientes SET ?', {nombre:nombre, apellidos:apell, telefono:tel, curp:curp, dia_registro: fecha}, (error, results) =>{
+  pool.query('INSERT INTO clientes SET ?', {nombre:nombre, apellidos:apell, telefono:tel, curp:curp, dia_registro: fecha}, (error, results) =>{
     if (error) {
       console.log(error);
       res.redirect('/clientes');
@@ -94,7 +94,7 @@ exports.update_cliente = (req, res) =>{
   const curp = req.body.curp;
 
     //mandar a guardar el UPDATE de los datos en la BD
-  conexion.query('UPDATE clientes SET ? WHERE id = ?', [{nombre:nombre, apellidos:apell, telefono:tel, curp:curp}, id] , (error, results) => {
+  pool.query('UPDATE clientes SET ? WHERE id = ?', [{nombre:nombre, apellidos:apell, telefono:tel, curp:curp}, id] , (error, results) => {
     if (error) {
       console.log(error);
       res.redirect('/clientes');
