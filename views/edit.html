@@ -32,14 +32,10 @@
           value="<%= cliente.telefono %>">
         <input type="text" class="Input_ingresar_registro input_direccion" placeholder="Direccion De Renta" id="direc"
           name="direc" value="<%= cliente.direccion_renta %>">
-        <select id="tipo_bano" disabled name="tipo_bano" class="Input_ingresar_registro">
-          <option value="normal" selected>
-            <%= cliente.tipo_baño %>
-          </option>
-          <option value="vip">VIP</option>
-        </select>
-        <input type="number" disabled class="Input_ingresar_registro input_number" placeholder="Cantidad" id="canti"
-          name="canti" value="<%= cliente.cantidad %>">
+        <input type="number" class="Input_ingresar_registro input_number input_number_modifier"
+          placeholder="Baños normales: <%= cliente.baños_normales %>" id="normal" name="normal" disabled>
+        <input type="number" class="Input_ingresar_registro input_number input_number_modifier"
+          placeholder="Baños vip: <%= cliente.baños_vip %>" id="vip" name="vip" disabled>
         <button type="submit" class="btn_ingresar">Actualizar</button>
         <a href="/rentas" class="btn_ingresar btn_cancelar">Cancelar</a>
       </form>
