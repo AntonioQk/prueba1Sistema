@@ -87,6 +87,49 @@ router.post('/auth', async (req, res) => {
     }) 
 })
 
+//SE DEFINEN LAS RUTAS PARA LOS CLIENTES, (ingresar, editar y mostrar)
+router.get('/clientes', (req, res) => {
+  if (req.session.loggedin) {
+    conexion.query('SELECT * FROM clientes', (error, results) =>{
+      if (error) {
+        throw error;
+      }else{
+        res.render('clientes_registrados.html', {results:results}); 
+        
+      }
+    })
+    
+  }else{
+    res.redirect('/');
+  }
+})
+
+//nuevo cliente
+router.get('/nuevo_cliente', (req, res) => {
+  if (req.session.loggedin) {
+    
+   res.render('nuevo_cliente.html');
+    
+  } else{
+    res.redirect('/');
+  }
+})
+//editar cliente
+router.get('/editar_cliente/:id', (req, res) => {
+  if (req.session.loggedin) {
+    const id = req.params.id;
+    //una vez que se entra a la ruta EDIT, se utiliza una sentencia query para mostrar datos de la BD en los inputs, para despues realizar la actualizacion de lo que se necesite
+    conexion.query('SELECT * FROM clientes WHERE id = ?',[id], (error, results) => {
+      if (error) {
+        throw error;
+      }else{
+        res.render('editar_cliente.html', {cliente:results[0]}); 
+      }
+    })
+  }else{
+    res.redirect('/');
+  }
+})
 
 // SE DEFINE LA RUTA PARA LA PAGINA DE RENTAS Y SE DEFINE QUE OPERACION SE REALIZARÁ CUANDO SE ENTRE A ESTA RUTA
 router.get('/rentas', (req, res) =>{
