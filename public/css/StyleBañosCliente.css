@@ -551,4 +551,6 @@ header {
   align-items: center;
 }
 
-
+.input_number_modifier{
+  width: 200px;
+}
