@@ -60,3 +60,48 @@ exports.update = (req, res) =>{
   })
  
 };
+
+//Insertar nuevo cliente
+exports.save_cliente = (req, res) =>{
+  //se capturan los datos de los inputs
+  const nombre = req.body.nombre;
+  const apell = req.body.apell;
+  const tel = req.body.tel;
+  const curp = req.body.curp;
+  const fecha = new Date();
+  
+  //se mandan a guardar los datos capturados en la BD
+  conexion.query('INSERT INTO clientes SET ?', {nombre:nombre, apellidos:apell, telefono:tel, curp:curp, dia_registro: fecha}, (error, results) =>{
+    if (error) {
+      console.log(error);
+      res.redirect('/clientes');
+    }else{
+      //Una vez ingresados los datos, se redirecciona a la pagina de clientes para vizualizar los datos en el navegador
+      res.redirect('/clientes');
+      
+    }
+  })
+
+};
+
+//actualizar cliente
+exports.update_cliente = (req, res) =>{
+  //se capturan los datos que se quieren modificar de los registros
+  const id = req.body.id_cliente
+  const nombre = req.body.nombre;
+  const apell = req.body.apell;
+  const tel = req.body.tel;
+  const curp = req.body.curp;
+
+    //mandar a guardar el UPDATE de los datos en la BD
+  conexion.query('UPDATE clientes SET ? WHERE id = ?', [{nombre:nombre, apellidos:apell, telefono:tel, curp:curp}, id] , (error, results) => {
+    if (error) {
+      console.log(error);
+      res.redirect('/clientes');
+    }else{
+      //Una vez actualizado los datos, se redirecciona a la pagina de clientes para vizualizar los datos en el navegador
+      res.redirect('/clientes');
+    }
+  })
+ 
+};
