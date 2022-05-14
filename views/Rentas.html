@@ -103,50 +103,50 @@
           <th class="titulo_encabezado_table">Apellidos</th>
           <th class="titulo_encabezado_table titulo_encabezado_table-modifier">Num. Tel</th>
           <th class="titulo_encabezado_table titulo_encabezado_table-modifier">Direccion De <br> La Renta</th>
-          <th class="titulo_encabezado_table">Tipo <br> Baño</th>
-          <th class="titulo_encabezado_table">Cantidad</th>
-          <th class="titulo_encabezado_table titulo_encabezado_table-modifier">Devolver en:</th>
+          <th class="titulo_encabezado_table">Baños <br> Normales</th>
+          <th class="titulo_encabezado_table">Baños <br> Vip</th>
+          <th class="titulo_encabezado_table titulo_encabezado_table-modifier">Devolver el:</th>
         </tr>
       </thead>
 
       <tbody>
 
-        <% results.forEach((cliente)=>{ %>
+        <% results.forEach((renta)=>{ %>
           <tr class="fila_dato_registro">
             <td class="dato_registro dato_registro-modifier">
-              <%= cliente.id_cliente %>
+              <%= renta.id_cliente %>
             </td>
 
             <td class="dato_registro">
-              <%= cliente.Nombre %>
+              <%= renta.Nombre %>
 
             </td>
             <td class="dato_registro">
-              <%= cliente.apellidos %>
+              <%= renta.apellidos %>
 
             </td>
             <td class="dato_registro dato_registro-modifier">
-              <%= cliente.telefono %>
+              <%= renta.telefono %>
             </td>
             <td class="dato_registro dato_registro-modifier">
-              <%= cliente.direccion_renta %>
+              <%= renta.direccion_renta %>
             </td>
             <td class="dato_registro">
-              <%= cliente.tipo_baño %>
+              <%= renta.baños_normales %>
             </td>
             <td class="dato_registro">
-              <%= cliente.cantidad %>
+              <%= renta.baños_vip %>
             </td>
              <td class="dato_registro dato_registro-modifier" id="fecha">
-              <%= cliente.devolver %>
+              <%= renta.devolver %>
             </td>
 
             <td class="cuadro_btns_tabla">
-              <a href="/edit/<%= cliente.id_cliente %>"><img src="resources/img/iconos/edit.svg" alt="delete"></a>
+              <a href="/edit/<%= renta.id_cliente %>"><img src="resources/img/iconos/edit.svg" alt="delete"></a>
             </td>
 
             <td class="cuadro_btns_tabla">
-              <a onclick="confirmar('<%= cliente.id_cliente %>', '<%= cliente.Nombre %>')"><img
+              <a onclick="confirmar('<%= renta.id_cliente %>', '<%= renta.Nombre %>')"><img
                   src="resources/img/iconos/delete.svg" alt="delete" id="btn_eliminar" name="btn_eliminar"></a>
             </td>
           </tr>
