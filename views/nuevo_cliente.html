@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cliente</title>
+  <link rel="stylesheet" href="../public/css/StyleBañosCliente.css">
+</head>
+
+<body>
+  <main>
+    <form class="contenedor_datos_ingreso contenedor_datos_ingreso-modifier" action="/nuevo_cliente" method="post">
+      <input type="text" class="Input_ingresar_registro" placeholder="Nombre" id="nombre" name="nombre">
+      <input type="text" class="Input_ingresar_registro" placeholder="Apellidos" id="apell" name="apell">
+      <input type="number" class="Input_ingresar_registro" placeholder="Telefono" id="tel" name="tel"
+        onkeypress="return (event.charCode >= 48 && event.charCode <= 57)">
+      <input type="text" class="Input_ingresar_registro" placeholder="Curp" id="curp" name="curp" required>
+      <button type=" submit" class="btn_ingresar">Agregar</button>
+      <a href="/clientes" class="btn_ingresar btn_cancelar">Cancelar</a>
+    </form>
+  </main>
+
+</body>
+
+</html>
