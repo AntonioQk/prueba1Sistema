@@ -12,7 +12,7 @@
 <body>
   <main>
     <% if (cliente) { %>
-      <form class="contenedor_datos_ingreso" action="/update_cliente" method="post">
+      <form class="contenedor_datos_ingreso contenedor_datos_ingreso-modifier" action="/update_cliente" method="post">
         <input id="id_cliente" name="id_cliente" value="<%= cliente.id %>" class="Input_ingresar_registro"
           placeholder="Id">
         <input type="text" class="Input_ingresar_registro" placeholder="Nombre" id="nombre" name="nombre"
