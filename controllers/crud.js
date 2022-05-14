@@ -15,7 +15,7 @@ exports.save = (req, res) =>{
   const apell = req.body.apell;
   const tel = req.body.tel;
   const direc = req.body.direc;
-  const normal = req.body.vip;
+  const normal = req.body.normal;
   const vip = req.body.vip;
   const fecha = new Date();
   fecha.setDate(fecha.getDate()+15);
