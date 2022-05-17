@@ -8,6 +8,15 @@ Salida: se muestran los registros de la BD en el navegador y tambien se pueden a
 //Se importa la conexion a la BD que se realizó en su respectivo archivo (db.js)
 const pool = require('../database/db');
 
+//funcion para los dias
+function dateDiff(d) {
+  const dia_entrega = new Date(d);
+  const hoy = new Date();
+  const difference = dia_entrega.getTime() - hoy.getTime();
+  const dias = Math.ceil(difference / (1000 * 3600 * 24));
+  return dias;
+}
+
 //INSERTAR DATOS
 exports.save = (req, res) =>{
   //se capturan los datos de los inputs
@@ -17,11 +26,13 @@ exports.save = (req, res) =>{
   const direc = req.body.direc;
   const normal = req.body.normal;
   const vip = req.body.vip;
+  //lineas para sumar los 15 dias a la fecha del registro
   const fecha = new Date();
   fecha.setDate(fecha.getDate()+15);
+  const diass = dateDiff(fecha);
 
   //se mandan a guardar los datos capturados en la BD
-  pool.query('INSERT INTO clientes_renta SET ?', {Nombre:nombre, apellidos:apell, telefono:tel, direccion_renta:direc, baños_normales:normal, baños_vip:vip, devolver:fecha}, (error, results) =>{
+  pool.query('INSERT INTO clientes_renta SET ?', {Nombre:nombre, apellidos:apell, telefono:tel, direccion_renta:direc, baños_normales:normal, baños_vip:vip, devolver:diass}, (error, results) =>{
     if (error) {
       console.log(error);
       res.redirect('/rentas');
