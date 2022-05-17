@@ -151,7 +151,15 @@ router.get('/rentas', (req, res) =>{
 //ruta de ingreso
 router.get('/ingreso', (req, res) => {
   if (req.session.loggedin) {
-    res.render('ingresar.html');
+    //traigo datos de los clientes para poder usarlos al momento de crear un nuevo registro
+    pool.query('select id, nombre, apellidos, telefono from clientes;', (error, results) => {
+    if (error) {
+      throw error;
+    }else{
+      //Una vez que se entre a esta ruta de '/banos', se renderiza el archivo BañosDisponibles.html
+      res.render('ingresar.html', {results:results});
+    }
+    })
   }else{
     res.redirect('/');
   }
