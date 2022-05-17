@@ -20,9 +20,7 @@ const pool = require('../database/db');
 //INSERTAR DATOS
 exports.save = (req, res) =>{
   //se capturan los datos de los inputs
-  const nombre = req.body.nombre;
-  const apell = req.body.apell;
-  const tel = req.body.tel;
+  const id = req.body.cliente;
   const direc = req.body.direc;
   const normal = req.body.normal;
   const vip = req.body.vip;
@@ -31,15 +29,19 @@ exports.save = (req, res) =>{
   fecha.setDate(fecha.getDate()+15);
   //const diass = dateDiff(fecha);
 
-  //se mandan a guardar los datos capturados en la BD
-  pool.query('INSERT INTO clientes_renta SET ?', {Nombre:nombre, apellidos:apell, telefono:tel, direccion_renta:direc, baños_normales:normal, baños_vip:vip, devolver:fecha}, (error, results) =>{
-    if (error) {
-      console.log(error);
-      res.redirect('/rentas');
-    }else{
-      //Una vez ingresados los datos, se redirecciona a la pagina de clientes para vizualizar los datos en el navegador
-      res.redirect('/rentas');
-    }
+  pool.query(`SELECT * FROM clientes where id = ${id}` , (error, results) =>{
+    const cliente = results[0];
+    let {nombre, apellidos, telefono} = cliente;
+    //se mandan a guardar los datos capturados en la BD
+    pool.query(`INSERT INTO clientes_renta SET ?`, {Nombre:nombre, apellidos:apellidos, telefono:telefono, direccion_renta:direc, baños_normales:normal, baños_vip:vip, devolver:fecha}, (error, results) =>{
+      if (error) {
+        console.log(error);
+        res.redirect('/rentas');
+      }else{
+        //Una vez ingresados los datos, se redirecciona a la pagina de clientes para vizualizar los datos en el navegador
+        res.redirect('/rentas');
+      }
+    })
   })
   //Se le pone la cantidad de dias restantes para entregar
   //pool.query('update clientes_renta set devolver = date_add(devolver, interval 15 day)');
