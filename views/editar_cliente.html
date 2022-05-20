@@ -15,6 +15,8 @@
       <form class="contenedor_datos_ingreso contenedor_datos_ingreso-modifier" action="/update_cliente" method="post">
         <input id="id_cliente" name="id_cliente" value="<%= cliente.id %>" class="Input_ingresar_registro"
           placeholder="Id">
+        <input type="text" class="Input_ingresar_registro" placeholder="Tipo de cliente" id="tipo" name="tipo"
+          value="<%= cliente.tipo_cliente %>">
         <input type="text" class="Input_ingresar_registro" placeholder="Nombre" id="nombre" name="nombre"
           value="<%= cliente.nombre %>">
         <input type="text" class="Input_ingresar_registro" placeholder="Apellidos" id="apell" name="apell"
