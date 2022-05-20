@@ -148,6 +148,40 @@ router.get('/rentas', (req, res) =>{
 
 })
 
+// ruta para ordenar registro por nombre
+router.get('/rentas/orderName', (req, res) =>{
+  if (req.session.loggedin) {
+    //una vez que se entra a esta ruta, se utiliza una sentencia query para mostrar datos de la BD
+    pool.query('select * from clientes_renta order by Nombre asc', (error, results) =>{
+      if (error) {
+        throw error;
+      }else{
+        res.render('./Rentas.html', {results:results}); 
+      }
+    })
+  }else{
+    res.redirect('/');
+  }
+
+})
+
+// ruta para ordenar registro por fecha
+router.get('/rentas/orderDate', (req, res) =>{
+  if (req.session.loggedin) {
+    //una vez que se entra a esta ruta, se utiliza una sentencia query para mostrar datos de la BD
+    pool.query('select * from clientes_renta order by devolver asc', (error, results) =>{
+      if (error) {
+        throw error;
+      }else{
+        res.render('./Rentas.html', {results:results}); 
+      }
+    })
+  }else{
+    res.redirect('/');
+  }
+
+})
+
 //ruta de ingreso
 router.get('/ingreso', (req, res) => {
   if (req.session.loggedin) {
