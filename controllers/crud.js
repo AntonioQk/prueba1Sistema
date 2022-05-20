@@ -31,9 +31,9 @@ exports.save = (req, res) =>{
 
   pool.query(`SELECT * FROM clientes where id = ${id}` , (error, results) =>{
     const cliente = results[0];
-    let {nombre, apellidos, telefono} = cliente;
+    let {tipo_cliente, nombre, apellidos, telefono} = cliente;
     //se mandan a guardar los datos capturados en la BD
-    pool.query(`INSERT INTO clientes_renta SET ?`, {Nombre:nombre, apellidos:apellidos, telefono:telefono, direccion_renta:direc, baños_normales:normal, baños_vip:vip, devolver:fecha}, (error, results) =>{
+    pool.query(`INSERT INTO clientes_renta SET ?`, {tipo_cliente:tipo_cliente, Nombre:nombre, apellidos:apellidos, telefono:telefono, direccion_renta:direc, baños_normales:normal, baños_vip:vip, devolver:fecha}, (error, results) =>{
       if (error) {
         console.log(error);
         res.redirect('/rentas');
@@ -77,6 +77,7 @@ exports.update = (req, res) =>{
 //Insertar nuevo cliente
 exports.save_cliente = (req, res) =>{
   //se capturan los datos de los inputs
+  const tipo = req.body.tipo;
   const nombre = req.body.nombre;
   const apell = req.body.apell;
   const tel = req.body.tel;
@@ -84,7 +85,7 @@ exports.save_cliente = (req, res) =>{
   const fecha = new Date();
   
   //se mandan a guardar los datos capturados en la BD
-  pool.query('INSERT INTO clientes SET ?', {nombre:nombre, apellidos:apell, telefono:tel, curp:curp, dia_registro: fecha}, (error, results) =>{
+  pool.query('INSERT INTO clientes SET ?', {tipo_cliente:tipo, nombre:nombre, apellidos:apell, telefono:tel, curp:curp, dia_registro: fecha}, (error, results) =>{
     if (error) {
       console.log(error);
       res.redirect('/clientes');
@@ -101,13 +102,14 @@ exports.save_cliente = (req, res) =>{
 exports.update_cliente = (req, res) =>{
   //se capturan los datos que se quieren modificar de los registros
   const id = req.body.id_cliente
+  const tipo = req.body.tipo;
   const nombre = req.body.nombre;
   const apell = req.body.apell;
   const tel = req.body.tel;
   const curp = req.body.curp;
 
     //mandar a guardar el UPDATE de los datos en la BD
-  pool.query('UPDATE clientes SET ? WHERE id = ?', [{nombre:nombre, apellidos:apell, telefono:tel, curp:curp}, id] , (error, results) => {
+  pool.query('UPDATE clientes SET ? WHERE id = ?', [{tipo_cliente:tipo, nombre:nombre, apellidos:apell, telefono:tel, curp:curp}, id] , (error, results) => {
     if (error) {
       console.log(error);
       res.redirect('/clientes');
