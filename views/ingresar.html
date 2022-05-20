@@ -19,6 +19,7 @@
         <option value="nada" selected disabled>Elige un cliente</option>
         <% results.forEach((clientes)=>{ %>
           <option value="<%= clientes.id %>" class="opcion_cliente" id="id_clientess">
+            <%= clientes.tipo_cliente %>
             <%= clientes.nombre %>
               <%= clientes.apellidos %>
                 <%= clientes.telefono %>
