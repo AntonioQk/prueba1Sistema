@@ -186,7 +186,7 @@ router.get('/rentas/orderDate', (req, res) =>{
 router.get('/ingreso', (req, res) => {
   if (req.session.loggedin) {
     //traigo datos de los clientes para poder usarlos al momento de crear un nuevo registro
-    pool.query('select id, nombre, apellidos, telefono from clientes;', (error, results) => {
+    pool.query('select id, tipo_cliente, nombre, apellidos, telefono from clientes;', (error, results) => {
     if (error) {
       throw error;
     }else{
