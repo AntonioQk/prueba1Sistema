@@ -13,7 +13,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rentas</title>
-  <link rel="stylesheet" href="resources/css/StyleBañosCliente.css">
+  <link rel="stylesheet" href="../resources/css/StyleBañosCliente.css">
 </head>
 
 <body>
@@ -23,19 +23,19 @@
       <img src="" alt="" class="img_usuario">
       <div class="usuario_text">
         <h2>EQUIRENT</h2>
-        <a href="logout" class="cerrar_sesion">Cerrar Sesión</a>
+        <a href="/logout" class="cerrar_sesion">Cerrar Sesión</a>
       </div>
     </div>
 
     <nav class="Nav1">
       <!-- Esta es la parte donde se muestran los link de las imagnes del sistema -->
-      <a href="./rentas" class="Contenedor_clientes Contenedor_clientes-modifier">
-        <img src="resources/img/iconos/iconoClientes 1.png" alt="cliente" class="clientes_logo">
+      <a href="/rentas" class="Contenedor_clientes Contenedor_clientes-modifier">
+        <img src="../resources/img/iconos/iconoClientes 1.png" alt="cliente" class="clientes_logo">
         Rentas
       </a>
 
-      <a href="./Banos" class="Contenedor_baños Contenedor_baños-modifier">
-        <img src="resources/img/iconos/iconoBaño.png" alt="baño" class="baños_logo">
+      <a href="/Banos" class="Contenedor_baños Contenedor_baños-modifier">
+        <img src="./resources/img/iconos/iconoBaño.png" alt="baño" class="baños_logo">
         Baños Disponibles
       </a>
 
@@ -58,8 +58,8 @@
       </button>
 
       <div class="container_nav2" id="menu2">
-        <a href="./rentas" class="clientes_nav2 option_menu2 clientes_nav2-modifier">Rentas</a>
-        <a href="./Banos" class="baño_nav2 option_menu2 baño_nav2-modifier">Baños</a>
+        <a href="/rentas" class="clientes_nav2 option_menu2 clientes_nav2-modifier">Rentas</a>
+        <a href="/Banos" class="baño_nav2 option_menu2 baño_nav2-modifier">Baños</a>
         <div class="Option">
           <button class="option_modifier">
             <a href="/clientes" class="btn_clientes btn_clientes-modifier2">Ver clientes</a>
@@ -100,13 +100,16 @@
       <thead class="Head_table">
         <tr class="fila_encabezado">
           <th class="titulo_encabezado_table titulo_encabezado_table-modifier">Id</th>
-          <th class="titulo_encabezado_table">Nombre</th>
+          <th class="titulo_encabezado_table titulo_encabezado_table-modifier">Tipo <br> Cliente</th>
+          <th class="titulo_encabezado_table"><a href="/rentas/orderName"><img src="../resources/img/iconos/ordenar.svg"
+                class="icon_order"></a> Nombre</th>
           <th class="titulo_encabezado_table">Apellidos</th>
           <th class="titulo_encabezado_table titulo_encabezado_table-modifier">Num. Tel</th>
           <th class="titulo_encabezado_table titulo_encabezado_table-modifier">Direccion De <br> La Renta</th>
           <th class="titulo_encabezado_table">Baños <br> Normales</th>
           <th class="titulo_encabezado_table">Baños <br> Vip</th>
-          <th class="titulo_encabezado_table titulo_encabezado_table-modifier">Devolver el:</th>
+          <th class="titulo_encabezado_table titulo_encabezado_table-modifier"> <a href="/rentas/orderDate"><img
+                src="../resources/img/iconos/ordenar.svg" class="icon_order"></a> Devolver el:</th>
         </tr>
       </thead>
 
@@ -116,6 +119,10 @@
           <tr class="fila_dato_registro">
             <td class="dato_registro dato_registro-modifier">
               <%= renta.id_cliente %>
+            </td>
+              
+             <td class="dato_registro dato_registro-modifier">
+
             </td>
 
             <td class="dato_registro">
@@ -143,12 +150,12 @@
             </td>
 
             <td class="cuadro_btns_tabla">
-              <a href="/edit/<%= renta.id_cliente %>"><img src="resources/img/iconos/edit.svg" alt="delete"></a>
+              <a href="/edit/<%= renta.id_cliente %>"><img src="../resources/img/iconos/edit.svg" alt="delete"></a>
             </td>
 
             <td class="cuadro_btns_tabla">
               <a onclick="confirmar('<%= renta.id_cliente %>', '<%= renta.Nombre %>')"><img
-                  src="resources/img/iconos/delete.svg" alt="delete" id="btn_eliminar" name="btn_eliminar"></a>
+                  src="../resources/img/iconos/delete.svg" alt="delete" id="btn_eliminar" name="btn_eliminar"></a>
             </td>
           </tr>
           <% }) %>
