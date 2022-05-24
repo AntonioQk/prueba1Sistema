@@ -182,6 +182,23 @@ router.get('/rentas/orderDate', (req, res) =>{
 
 })
 
+// ruta para ordenar historial por nombre
+router.get('/historial/orderName', (req, res) =>{
+  if (req.session.loggedin) {
+    //una vez que se entra a esta ruta, se utiliza una sentencia query para mostrar datos de la BD
+    pool.query(`SELECT * FROM clientes_renta where estado = "devuelto" order by Nombre asc`, (error, results) =>{
+      if (error) {
+        throw error;
+      }else{
+        res.render('./Historial_rentas.html', {results:results}); 
+      }
+    })
+  }else{
+    res.redirect('/');
+  }
+
+})
+
 //ruta de ingreso
 router.get('/ingreso', (req, res) => {
   if (req.session.loggedin) {
