@@ -152,7 +152,7 @@ router.get('/rentas', (req, res) =>{
 router.get('/rentas/orderName', (req, res) =>{
   if (req.session.loggedin) {
     //una vez que se entra a esta ruta, se utiliza una sentencia query para mostrar datos de la BD
-    pool.query('select * from clientes_renta order by Nombre asc', (error, results) =>{
+    pool.query(`SELECT * FROM clientes_renta where estado = "rentando" order by Nombre asc`, (error, results) =>{
       if (error) {
         throw error;
       }else{
@@ -169,7 +169,7 @@ router.get('/rentas/orderName', (req, res) =>{
 router.get('/rentas/orderDate', (req, res) =>{
   if (req.session.loggedin) {
     //una vez que se entra a esta ruta, se utiliza una sentencia query para mostrar datos de la BD
-    pool.query('select * from clientes_renta order by devolver asc', (error, results) =>{
+    pool.query(`SELECT * FROM clientes_renta where estado = "rentando" order by devolver asc`, (error, results) =>{
       if (error) {
         throw error;
       }else{
