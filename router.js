@@ -135,7 +135,7 @@ router.get('/editar_cliente/:id', (req, res) => {
 router.get('/rentas', (req, res) =>{
   if (req.session.loggedin) {
     //una vez que se entra a esta ruta, se utiliza una sentencia query para mostrar datos de la BD
-    pool.query('SELECT * FROM clientes_renta', (error, results) =>{
+    pool.query(`SELECT * FROM clientes_renta where estado = "rentando"`, (error, results) =>{
       if (error) {
         throw error;
       }else{
