@@ -493,6 +493,8 @@ header {
 }
 
 .btn_nuevoDato{
+  width: 40x;
+  height: 40px;
   display: inline-block;
   text-decoration: none;
 
