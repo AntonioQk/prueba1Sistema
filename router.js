@@ -211,7 +211,7 @@ router.get('/delete/:id_cliente', (req, res)=>{
     pool.query(`update baños inner join clientes_renta on baños.tipo_baño = "vip"
   set baños.disponibles = baños.disponibles + clientes_renta.baños_vip where clientes_renta.id_cliente = ${id}`);
   //Se elimina el registro seleccionado
-      pool.query('DELETE FROM clientes_renta WHERE id_cliente = ?', [id], (error, results) => {
+      pool.query(`update clientes_renta set estado = "devuelto" WHERE id_cliente = ?`, [id], (error, results) => {
         if (error) {
           throw error;
         }else{
@@ -269,6 +269,22 @@ router.get('/banos', (req, res) =>{
     res.redirect('/');
   }
   
+})
+
+// RUTA DE HISTORIAL
+router.get('/historial', (req, res) => {
+  if (req.session.loggedin) {
+    //una vez que se entra a esta ruta, se utiliza una sentencia query para mostrar datos de la BD
+    pool.query(`SELECT * FROM clientes_renta where estado = "devuelto"`, (error, results) =>{
+      if (error) {
+        throw error;
+      }else{
+        res.render('Historial_rentas.html', {results:results}); 
+      }
+    })
+  }else{
+    res.redirect('/');
+  }
 })
 
 //RUTA PARA CERRAR SESION
