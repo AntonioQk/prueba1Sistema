@@ -33,7 +33,7 @@ exports.save = (req, res) =>{
     const cliente = results[0];
     let {tipo_cliente, nombre, apellidos, telefono} = cliente;
     //se mandan a guardar los datos capturados en la BD
-    pool.query(`INSERT INTO clientes_renta SET ?`, {tipo_cliente:tipo_cliente, Nombre:nombre, apellidos:apellidos, telefono:telefono, direccion_renta:direc, baños_normales:normal, baños_vip:vip, devolver:fecha, estado:"rentando"}, (error, results) =>{
+    pool.query(`INSERT INTO clientes_renta SET ?`, {tipo_cliente:tipo_cliente, Nombre:nombre, apellidos:apellidos, telefono:telefono, direccion_renta:direc, baños_normales:normal, baños_vip:vip, devolver:fecha.toLocaleDateString(), estado:"rentando"}, (error, results) =>{
       if (error) {
         console.log(error);
         res.redirect('/rentas');
