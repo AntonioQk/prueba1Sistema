@@ -12,7 +12,11 @@
 <body>
   <main>
     <form class="contenedor_datos_ingreso contenedor_datos_ingreso-modifier" action="/nuevo_cliente" method="post">
-      <input type="text" class="Input_ingresar_registro" placeholder="Tipo de cliente" id="tipo" name="tipo">
+      <select name="tipo" id="tipo" class="Input_ingresar_registro" placeholder="Tipo de cliente">
+        <option value="ce">CE</option>
+        <option value="co">CO</option>
+        <option value="cg">CG</option>
+      </select>
       <input type="text" class="Input_ingresar_registro" placeholder="Nombre" id="nombre" name="nombre">
       <input type="text" class="Input_ingresar_registro" placeholder="Apellidos" id="apell" name="apell">
       <input type="number" class="Input_ingresar_registro" placeholder="Telefono" id="tel" name="tel"
