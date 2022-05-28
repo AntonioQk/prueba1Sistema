@@ -106,16 +106,22 @@
       <thead class="Head_table">
         <tr class="fila_encabezado">
           <th class="titulo_encabezado_table titulo_encabezado_table-modifier">Id</th>
-          <th class="titulo_encabezado_table titulo_encabezado_table-modifier">Tipo <br> Cliente</th>
-          <th class="titulo_encabezado_table"><a href="/rentas/orderName"><img src="../resources/img/iconos/ordenar.svg"
-                class="icon_order"></a> Nombre</th>
+          <th>
+            <select name="tipo_cliente" id="tipo_cliente" class="titulo_encabezado_tipo">
+              <option class="option_tipo_cliente" value="#" selected disabled>Tipo Cliente</option>
+              <option class="option_tipo_cliente" value="defecto" id="defecto">Por defecto</option>
+              <option class="option_tipo_cliente" value="co" id="CO">CO</option>
+              <option class="option_tipo_cliente" value="ce" id="CE">CE</option>
+              <option class="option_tipo_cliente" value="cg" id="CG">CG</option>
+            </select>
+          </th>
+          <th class="titulo_encabezado_table">Nombre</th>
           <th class="titulo_encabezado_table">Apellidos</th>
           <th class="titulo_encabezado_table titulo_encabezado_table-modifier">Num. Tel</th>
           <th class="titulo_encabezado_table titulo_encabezado_table-modifier">Direccion De <br> La Renta</th>
           <th class="titulo_encabezado_table">Baños <br> Normales</th>
           <th class="titulo_encabezado_table">Baños <br> Vip</th>
-          <th class="titulo_encabezado_table titulo_encabezado_table-modifier"> <a href="/rentas/orderDate"><img
-                src="../resources/img/iconos/ordenar.svg" class="icon_order"></a> Devolver el:</th>
+          <th class="titulo_encabezado_table titulo_encabezado_table-modifier">Devolver el:</th>
         </tr>
       </thead>
 
@@ -127,7 +133,7 @@
               <%= renta.id_cliente %>
             </td>
               
-             <td class="dato_registro dato_registro-modifier">
+             <td class="dato_registro">
               <%= renta.tipo_cliente %>
             </td>
 
@@ -177,6 +183,9 @@
 
   <!-- script de las alertas -->
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+   <!-- script para ordenar -->
+  <script src="../js/ordenar_rentas.js"></script> 
 
   <script>
     function confirmar(id_cliente, nombre) {
