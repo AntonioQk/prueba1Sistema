@@ -98,9 +98,16 @@
     <table class="tabla_clientes">
       <thead class="Head_table">
         <tr class="fila_encabezado">
-          <th class="titulo_encabezado_table titulo_encabezado_table-modifier">Tipo <br> Cliente</th>
-          <th class="titulo_encabezado_table"><a href="/historial/orderName"><img src="../resources/img/iconos/ordenar.svg"
-                class="icon_order"></a> Nombre</th>
+          <th>
+            <select name="tipo_cliente" id="tipo_cliente" class="titulo_encabezado_tipo">
+              <option class="option_tipo_cliente" value="#" selected disabled>Tipo Cliente</option>
+              <option class="option_tipo_cliente" value="defecto" id="Hdefecto">Por defecto</option>
+              <option class="option_tipo_cliente" value="co" id="HCO">CO</option>
+              <option class="option_tipo_cliente" value="ce" id="HCE">CE</option>
+              <option class="option_tipo_cliente" value="cg" id="HCG">CG</option>
+            </select>
+          </th>
+          <th class="titulo_encabezado_table">Nombre</th>
           <th class="titulo_encabezado_table">Apellidos</th>
           <th class="titulo_encabezado_table titulo_encabezado_table-modifier">Num. Tel</th>
           <th class="titulo_encabezado_table titulo_encabezado_table-modifier">Direccion De <br> La Renta</th>
@@ -116,7 +123,7 @@
         <% results.forEach((renta)=>{ %>
           <tr class="fila_dato_registro fila_dato_registro-modifier">
 
-            <td class="dato_registro dato_registro-modifier">
+            <td class="dato_registro">
               <%= renta.tipo_cliente %>
             </td>
 
@@ -160,6 +167,9 @@
 
   <!-- script de las alertas -->
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <!-- script para ordenar tabla -->
+  <script src="../js/ordenar_historial.js"></script>
 
   <script>
     function confirmar(id_cliente, nombre) {
