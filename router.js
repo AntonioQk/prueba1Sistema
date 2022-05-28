@@ -114,6 +114,62 @@ router.get('/nuevo_cliente', (req, res) => {
     res.redirect('/');
   }
 })
+
+// ------- RUTAS PARA ORDENAR LA TABLA DE CLIENTES POR TIPO DE CLIENTE --------------
+
+// ruta para ordenar clientes por Tipo de cliente CO
+router.get('/clientes/orderTipoCO', (req, res) =>{
+  if (req.session.loggedin) {
+    //una vez que se entra a esta ruta, se utiliza una sentencia query para mostrar datos de la BD
+    pool.query(`SELECT * FROM clientes where tipo_cliente = "co" order by nombre asc`, (error, results) =>{
+      if (error) {
+        throw error;
+      }else{
+        res.render('./clientes_registrados.html', {results:results}); 
+      }
+    })
+  }else{
+    res.redirect('/');
+  }
+
+})
+
+// ruta para ordenar clientes por Tipo de cliente CE
+router.get('/clientes/orderTipoCE', (req, res) =>{
+  if (req.session.loggedin) {
+    //una vez que se entra a esta ruta, se utiliza una sentencia query para mostrar datos de la BD
+    pool.query(`SELECT * FROM clientes where tipo_cliente = "ce" order by nombre asc`, (error, results) =>{
+      if (error) {
+        throw error;
+      }else{
+        res.render('./clientes_registrados.html', {results:results}); 
+      }
+    })
+  }else{
+    res.redirect('/');
+  }
+
+})
+
+// ruta para ordenar historial por Tipo de cliente CG
+router.get('/clientes/orderTipoCG', (req, res) =>{
+  if (req.session.loggedin) {
+    //una vez que se entra a esta ruta, se utiliza una sentencia query para mostrar datos de la BD
+    pool.query(`SELECT * FROM clientes where tipo_cliente = "cg" order by nombre asc`, (error, results) =>{
+      if (error) {
+        throw error;
+      }else{
+        res.render('./clientes_registrados.html', {results:results}); 
+      }
+    })
+  }else{
+    res.redirect('/');
+  }
+
+})
+
+// ---------------------------------------------------
+
 //editar cliente
 router.get('/editar_cliente/:id', (req, res) => {
   if (req.session.loggedin) {
