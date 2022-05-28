@@ -599,3 +599,17 @@ header {
 .fila_dato_registro-modifier{
   background-color: #bdbdbd;
 }
+
+/* select del tipo de cliente para ordenar tabla */
+
+.titulo_encabezado_tipo{
+  border: 1px solid rgb(122, 122, 122);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: inherit;
+  color: inherit;
+}
+
+.option_tipo_cliente{
+  font-weight: 600;
+}
