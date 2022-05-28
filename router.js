@@ -148,11 +148,13 @@ router.get('/rentas', (req, res) =>{
 
 })
 
-// ruta para ordenar registro por nombre
-router.get('/rentas/orderName', (req, res) =>{
+// ------------ RUTAS PARA ORDENAR LA TABLA DE RENTAS POR EL TIPO DE CLIENTE -------------------
+
+// ruta para ordenar registro por tipo de cliente CO
+router.get('/rentas/orderTipoCO', (req, res) =>{
   if (req.session.loggedin) {
     //una vez que se entra a esta ruta, se utiliza una sentencia query para mostrar datos de la BD
-    pool.query(`SELECT * FROM clientes_renta where estado = "rentando" order by Nombre asc`, (error, results) =>{
+    pool.query(`SELECT * FROM clientes_renta where estado = "rentando" and tipo_cliente = "co" order by Nombre asc`, (error, results) =>{
       if (error) {
         throw error;
       }else{
@@ -165,11 +167,11 @@ router.get('/rentas/orderName', (req, res) =>{
 
 })
 
-// ruta para ordenar registro por fecha
-router.get('/rentas/orderDate', (req, res) =>{
+// ruta para ordenar registro por tipo de cliente CE
+router.get('/rentas/orderTipoCE', (req, res) =>{
   if (req.session.loggedin) {
     //una vez que se entra a esta ruta, se utiliza una sentencia query para mostrar datos de la BD
-    pool.query(`SELECT * FROM clientes_renta where estado = "rentando" order by devolver asc`, (error, results) =>{
+    pool.query(`SELECT * FROM clientes_renta where estado = "rentando" and tipo_cliente = "ce" order by Nombre asc`, (error, results) =>{
       if (error) {
         throw error;
       }else{
@@ -182,15 +184,15 @@ router.get('/rentas/orderDate', (req, res) =>{
 
 })
 
-// ruta para ordenar historial por nombre
-router.get('/historial/orderName', (req, res) =>{
+// ruta para ordenar registro por tipo de cliente CG
+router.get('/rentas/orderTipoCG', (req, res) =>{
   if (req.session.loggedin) {
     //una vez que se entra a esta ruta, se utiliza una sentencia query para mostrar datos de la BD
-    pool.query(`SELECT * FROM clientes_renta where estado = "devuelto" order by Nombre asc`, (error, results) =>{
+    pool.query(`SELECT * FROM clientes_renta where estado = "rentando" and tipo_cliente = "cg" order by Nombre asc`, (error, results) =>{
       if (error) {
         throw error;
       }else{
-        res.render('./Historial_rentas.html', {results:results}); 
+        res.render('./Rentas.html', {results:results}); 
       }
     })
   }else{
@@ -198,6 +200,8 @@ router.get('/historial/orderName', (req, res) =>{
   }
 
 })
+
+// -----------------------------------------------
 
 //ruta de ingreso
 router.get('/ingreso', (req, res) => {
@@ -303,6 +307,61 @@ router.get('/historial', (req, res) => {
     res.redirect('/');
   }
 })
+
+// ------- RUTAS PARA ORDENAR LA TABLA DE HISTORIAL POR TIPO DE CLIENTE --------------
+
+// ruta para ordenar historial por Tipo de cliente CO
+router.get('/historial/orderTipoCO', (req, res) =>{
+  if (req.session.loggedin) {
+    //una vez que se entra a esta ruta, se utiliza una sentencia query para mostrar datos de la BD
+    pool.query(`SELECT * FROM clientes_renta where estado = "devuelto" and tipo_cliente = "co" order by Nombre asc`, (error, results) =>{
+      if (error) {
+        throw error;
+      }else{
+        res.render('./Historial_rentas.html', {results:results}); 
+      }
+    })
+  }else{
+    res.redirect('/');
+  }
+
+})
+
+// ruta para ordenar historial por Tipo de cliente CO
+router.get('/historial/orderTipoCE', (req, res) =>{
+  if (req.session.loggedin) {
+    //una vez que se entra a esta ruta, se utiliza una sentencia query para mostrar datos de la BD
+    pool.query(`SELECT * FROM clientes_renta where estado = "devuelto" and tipo_cliente = "ce" order by Nombre asc`, (error, results) =>{
+      if (error) {
+        throw error;
+      }else{
+        res.render('./Historial_rentas.html', {results:results}); 
+      }
+    })
+  }else{
+    res.redirect('/');
+  }
+
+})
+
+// ruta para ordenar historial por Tipo de cliente CG
+router.get('/historial/orderTipoCG', (req, res) =>{
+  if (req.session.loggedin) {
+    //una vez que se entra a esta ruta, se utiliza una sentencia query para mostrar datos de la BD
+    pool.query(`SELECT * FROM clientes_renta where estado = "devuelto" and tipo_cliente = "cg" order by Nombre asc`, (error, results) =>{
+      if (error) {
+        throw error;
+      }else{
+        res.render('./Historial_rentas.html', {results:results}); 
+      }
+    })
+  }else{
+    res.redirect('/');
+  }
+
+})
+
+// ---------------------------------------------------
 
 //RUTA PARA CERRAR SESION
 router.get('/logout', (req, res) => {
