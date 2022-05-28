@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Clientes Registrados</title>
-  <link rel="stylesheet" href="resources/css/StyleBañosCliente.css">
+  <link rel="stylesheet" href="../resources/css/StyleBañosCliente.css">
 </head>
 
 <body>
@@ -16,19 +16,19 @@
       <img src="" alt="" class="img_usuario">
       <div class="usuario_text">
         <h2>EQUIRENT</h2>
-        <a href="logout" class="cerrar_sesion">Cerrar Sesión</a>
+        <a href="/logout" class="cerrar_sesion">Cerrar Sesión</a>
       </div>
     </div>
 
     <nav class="Nav1">
       <!-- Esta es la parte donde se muestran los link de las imagnes del sistema -->
-      <a href="./rentas" class="Contenedor_clientes Contenedor_clientes-modifier Contenedor-modifier2">
-        <img src="resources/img/iconos/iconoClientes 1.png" alt="cliente" class="clientes_logo">
+      <a href="/rentas" class="Contenedor_clientes Contenedor_clientes-modifier Contenedor-modifier2">
+        <img src="../resources/img/iconos/iconoClientes 1.png" alt="cliente" class="clientes_logo">
         Rentas
       </a>
 
-      <a href="./Banos" class="Contenedor_baños Contenedor_baños-modifier Contenedor-modifier2">
-        <img src="resources/img/iconos/iconoBaño.png" alt="baño" class="baños_logo">
+      <a href="/Banos" class="Contenedor_baños Contenedor_baños-modifier Contenedor-modifier2">
+        <img src="../resources/img/iconos/iconoBaño.png" alt="baño" class="baños_logo">
         Baños Disponibles
       </a>
 
@@ -40,16 +40,16 @@
 
     <nav class="Nav2" id="nav2">
       <button class="btn_menu" id="btn_menu">
-        <img src="resources/img/menu.svg" alt="">
+        <img src="../resources/img/menu.svg" alt="">
       </button>
 
       <button class="btn_menu btn_menu-modifier" id="menu_close">
-        <img src="resources/img/close_menu.svg" alt="">
+        <img src="../resources/img/close_menu.svg" alt="">
       </button>
 
       <div class="container_nav2" id="menu2">
-        <a href="./rentas" class="clientes_nav2 option_menu2">Rentas</a>
-        <a href="./Banos" class="baño_nav2 option_menu2 baño_nav2-modifier">Baños</a>
+        <a href="/rentas" class="clientes_nav2 option_menu2">Rentas</a>
+        <a href="/Banos" class="baño_nav2 option_menu2 baño_nav2-modifier">Baños</a>
         <div class="Option">
         </div>
       </div>
@@ -67,7 +67,15 @@
       <thead class="Head_table">
         <tr class="fila_encabezado">
           <th class="titulo_encabezado_table titulo_encabezado_table-modifier">Id</th>
-          <th class="titulo_encabezado_table">Tipo <br> cliente</th>
+          <th>
+            <select name="tipo_cliente" id="tipo_cliente" class="titulo_encabezado_tipo">
+              <option class="option_tipo_cliente" value="#" selected disabled>Tipo Cliente</option>
+              <option class="option_tipo_cliente" value="defecto" id="Cdefecto">Por defecto</option>
+              <option class="option_tipo_cliente" value="co" id="CCO">CO</option>
+              <option class="option_tipo_cliente" value="ce" id="CCE">CE</option>
+              <option class="option_tipo_cliente" value="cg" id="CCG">CG</option>
+            </select>
+          </th>
           <th class="titulo_encabezado_table">Nombre</th>
           <th class="titulo_encabezado_table">Apellidos</th>
           <th class="titulo_encabezado_table titulo_encabezado_table-modifier">Num. Tel</th>
