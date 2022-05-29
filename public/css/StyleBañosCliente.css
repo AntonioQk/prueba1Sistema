@@ -613,3 +613,7 @@ header {
 .option_tipo_cliente{
   font-weight: 600;
 }
+
+table {
+  text-transform: uppercase;
+}
