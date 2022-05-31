@@ -81,11 +81,11 @@ exports.save_cliente = (req, res) =>{
   const nombre = req.body.nombre;
   const apell = req.body.apell;
   const tel = req.body.tel;
-  const curp = req.body.curp;
-  const fecha = new Date();
+  const rfc = req.body.rfc;
+  const domi = req.body.domicilio;
   
   //se mandan a guardar los datos capturados en la BD
-  pool.query('INSERT INTO clientes SET ?', {tipo_cliente:tipo, nombre:nombre, apellidos:apell, telefono:tel, curp:curp, dia_registro: fecha}, (error, results) =>{
+  pool.query('INSERT INTO clientes SET ?', {tipo_cliente:tipo, nombre:nombre, apellidos:apell, telefono:tel, rfc:rfc, domicilio:domi}, (error, results) =>{
     if (error) {
       console.log(error);
       res.redirect('/clientes');
@@ -106,10 +106,11 @@ exports.update_cliente = (req, res) =>{
   const nombre = req.body.nombre;
   const apell = req.body.apell;
   const tel = req.body.tel;
-  const curp = req.body.curp;
+  const rfc = req.body.rfc;
+  const domi = req.body.domicilio;
 
     //mandar a guardar el UPDATE de los datos en la BD
-  pool.query('UPDATE clientes SET ? WHERE id = ?', [{tipo_cliente:tipo, nombre:nombre, apellidos:apell, telefono:tel, curp:curp}, id] , (error, results) => {
+  pool.query('UPDATE clientes SET ? WHERE id = ?', [{tipo_cliente:tipo, nombre:nombre, apellidos:apell, telefono:tel, rfc:rfc, domicilio:domi}, id] , (error, results) => {
     if (error) {
       console.log(error);
       res.redirect('/clientes');
