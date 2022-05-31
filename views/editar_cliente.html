@@ -23,8 +23,10 @@
           value="<%= cliente.apellidos %>">
         <input type="number" class="Input_ingresar_registro" placeholder="Telefono" id="tel" name="tel"
           onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" value="<%= cliente.telefono %>">
-        <input type="text" class="Input_ingresar_registro" placeholder="Curp" id="curp" name="curp" required
-          value="<%= cliente.curp %>">
+        <input type="text" class="Input_ingresar_registro" placeholder="RFC" id="rfc" name="rfc" required
+          value="<%= cliente.rfc %>">
+        <input type="text" class="Input_ingresar_registro" placeholder="Domicilio" id="domicilio" name="domicilio"
+          required value="<%= cliente.domicilio %>">
         <button type="submit" class="btn_ingresar">Actualizar</button>
         <a href="/clientes" class="btn_ingresar btn_cancelar">Cancelar</a>
       </form>
