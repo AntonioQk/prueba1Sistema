@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ingresar datos</title>
-  <link rel="stylesheet" href="resources/css/StyleBañosCliente.css">
+  <link rel="stylesheet" href="../resources/css/StyleBañosCliente.css">
 </head>
 
 <body>
@@ -14,6 +14,13 @@
     <h1 class="titulo_datos">Ingresa un nuevo registro</h1>
   <!-- Formulario para ingresar un nuevo registro --> 
     <form class="contenedor_datos_ingreso" action="/save" method="post">
+      <select class="Input_ingresar_registro" name="tipo__cliente" id="tipo__cliente">
+        <option value="dd" disabled selected>Filtrar cliente</option>
+        <option value="d" id="d_ingresar_c">Por defecto</option>
+        <option value="co" id="co_ingresar_c">CO</option>
+        <option value="ce" id="ce_ingresar_c">CE</option>
+        <option value="cg" id="cg_ingresar_c">CG</option>
+      </select>
   <!-- Input de seleccion, para poder seleccionar a un cliente -->
       <select id="cliente" name="cliente" class="Input_ingresar_registro" placeholder="cliente">
         <option value="nada" selected disabled>Elige un cliente</option>
@@ -38,7 +45,9 @@
       <a href="/rentas" class="btn_ingresar btn_cancelar">Cancelar</a>
     </form>
   </main>
-
+              
+              
+ <script src="../js/filtrar_cliente_ingreso.js"></script>
 
 </body>
 
