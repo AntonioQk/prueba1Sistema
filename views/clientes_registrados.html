@@ -79,8 +79,8 @@
           <th class="titulo_encabezado_table">Nombre</th>
           <th class="titulo_encabezado_table">Apellidos</th>
           <th class="titulo_encabezado_table titulo_encabezado_table-modifier">Num. Tel</th>
-          <th class="titulo_encabezado_table">Curp</th>
-          <th class="titulo_encabezado_table titulo_encabezado_table-modifier">Dia <br> registro</th>
+          <th class="titulo_encabezado_table">RFC</th>
+          <th class="titulo_encabezado_table">domicilio</th>
         </tr>
       </thead>
 
@@ -108,10 +108,10 @@
               <%= cliente.telefono %>
             </td>
             <td class="dato_registro">
-              <%= cliente.curp %>
+              <%= cliente.rfc %>
             </td>
-            <td class="dato_registro dato_registro-modifier">
-              <%= cliente.dia_registro %>
+            <td class="dato_registro">
+              <%= cliente.domicilio %>
             </td>
 
             <td class="cuadro_btns_tabla">
