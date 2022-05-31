@@ -259,10 +259,9 @@ router.get('/rentas/orderTipoCG', (req, res) =>{
 
 // -----------------------------------------------
 
-//ruta de ingreso
+// -------------RUTAS PARA INGRESAR RENTAS, esta es para ingresar sin filtrar nada --------------
 router.get('/ingreso', (req, res) => {
   if (req.session.loggedin) {
-    //traigo datos de los clientes para poder usarlos al momento de crear un nuevo registro
     pool.query('select id, tipo_cliente, nombre, apellidos, telefono from clientes;', (error, results) => {
     if (error) {
       throw error;
@@ -275,6 +274,56 @@ router.get('/ingreso', (req, res) => {
     res.redirect('/');
   }
 })
+
+// esta es para ingresar pero con unn filtro de cliente CO
+router.get('/ingreso/co', (req, res) => {
+  if (req.session.loggedin) {
+    pool.query(`select id, tipo_cliente, nombre, apellidos, telefono from clientes where tipo_cliente = "co";`, (error, results) => {
+    if (error) {
+      throw error;
+    }else{
+      //Una vez que se entre a esta ruta de '/banos', se renderiza el archivo BañosDisponibles.html
+      res.render('ingresar.html', {results:results});
+    }
+    })
+  }else{
+    res.redirect('/');
+  }
+})
+
+// esta es para ingresar pero con unn filtro de cliente CE
+router.get('/ingreso/ce', (req, res) => {
+  if (req.session.loggedin) {
+    pool.query(`select id, tipo_cliente, nombre, apellidos, telefono from clientes where tipo_cliente = "ce";`, (error, results) => {
+    if (error) {
+      throw error;
+    }else{
+      //Una vez que se entre a esta ruta de '/banos', se renderiza el archivo BañosDisponibles.html
+      res.render('ingresar.html', {results:results});
+    }
+    })
+  }else{
+    res.redirect('/');
+  }
+})
+
+// esta es para ingresar pero con unn filtro de cliente CG
+router.get('/ingreso/cg', (req, res) => {
+  if (req.session.loggedin) {
+    pool.query(`select id, tipo_cliente, nombre, apellidos, telefono from clientes where tipo_cliente = "cg";`, (error, results) => {
+    if (error) {
+      throw error;
+    }else{
+      //Una vez que se entre a esta ruta de '/banos', se renderiza el archivo BañosDisponibles.html
+      res.render('ingresar.html', {results:results});
+    }
+    })
+  }else{
+    res.redirect('/');
+  }
+})
+
+// --------------------------------------------------------------------
   
 
 // SE DEFINE LA RUTA PARA LA PAGINA DE eliminar un registro Y SE DEFINE QUE OPERACION SE REALIZARÁ CUANDO SE ENTRE A ESTA RUTA
